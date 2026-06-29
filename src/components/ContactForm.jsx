@@ -7,6 +7,12 @@ export default function ContactForm({ type = 'contact' }) {
   const endpoint = isWorkshop ? links.workshopFormEndpoint : links.contactFormEndpoint;
 
   const submit = async (event) => {
+    if (isWorkshop && endpoint.startsWith('https://formsubmit.co/')) {
+      const form = event.currentTarget;
+      setStatus('Thanks - your workshop request has been sent.');
+      window.setTimeout(() => form.reset(), 400);
+      return;
+    }
     event.preventDefault();
     const data = {
       ...Object.fromEntries(new FormData(event.currentTarget)),
@@ -27,9 +33,15 @@ export default function ContactForm({ type = 'contact' }) {
     }
   };
 
-  return (
-    <form className="contact-form" onSubmit={submit}>
+  return <>
+    <form className="contact-form" onSubmit={submit} action={isWorkshop ? endpoint : undefined} method={isWorkshop ? 'POST' : undefined} target={isWorkshop ? 'workshop-submit-frame' : undefined}>
       <input className="form-honey" name="_honey" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+      {isWorkshop && <>
+        <input type="hidden" name="_subject" value="New ZDU Workshop Information Request" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_url" value="https://zdu-headquarters.vercel.app/workshops" />
+        <input type="hidden" name="_captcha" value="false" />
+      </>}
       <div className="field-row">
         <label>Name<input name="name" required autoComplete="name" /></label>
         <label>Email<input name="email" type="email" required autoComplete="email" /></label>
@@ -42,5 +54,6 @@ export default function ContactForm({ type = 'contact' }) {
       <button className="button button-primary" type="submit">{isWorkshop ? 'Request Workshop Info' : 'Send Message'}</button>
       <p className="form-status" aria-live="polite">{status}</p>
     </form>
-  );
+    {isWorkshop && <iframe className="form-submit-frame" name="workshop-submit-frame" title="Workshop request submission" />}
+  </>;
 }

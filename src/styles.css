@@ -285,6 +285,7 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 .form-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 90px; }
 .contact-form { display: grid; gap: 20px; padding: 40px; background: white; border: 1px solid var(--line); border-radius: 22px; }
 .form-honey { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+.form-submit-frame { position: absolute; width: 1px; height: 1px; border: 0; opacity: 0; pointer-events: none; }
 .field-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; }
 .contact-form label { display: grid; gap: 8px; font-size: .72rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
 .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 15px; background: #f4f2ec; border: 1px solid transparent; border-radius: 10px; outline: 0; resize: vertical; }
