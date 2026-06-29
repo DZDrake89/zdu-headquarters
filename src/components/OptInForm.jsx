@@ -9,15 +9,24 @@ export default function OptInForm({ modal = false, onClose }) {
     const email = new FormData(event.currentTarget).get('email');
     if (links.scorecardFormEndpoint) {
       try {
-        const response = await fetch(links.scorecardFormEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'ZDU Scorecard' }) });
-        if (!response.ok) throw new Error();
+        const payload = new URLSearchParams({
+          'fields[email]': email,
+          'ml-submit': '1',
+          anticsrf: 'true'
+        });
+        await fetch(links.scorecardFormEndpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
+        });
         setStatus('Success! Opening your scorecard now.');
-        window.setTimeout(() => window.open(links.scorecard, '_blank', 'noopener,noreferrer'), 350);
+        window.setTimeout(() => window.location.assign(links.scorecard), 450);
       } catch { setStatus('Please try again or use the direct scorecard link.'); }
     } else {
       localStorage.setItem('zduPreviewLead', JSON.stringify({ email, capturedAt: new Date().toISOString() }));
       setStatus('Preview captured. Opening your scorecard now.');
-      window.setTimeout(() => window.open(links.scorecard, '_blank', 'noopener,noreferrer'), 350);
+      window.setTimeout(() => window.location.assign(links.scorecard), 450);
     }
   };
 

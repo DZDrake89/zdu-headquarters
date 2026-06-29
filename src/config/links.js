@@ -9,5 +9,5 @@ export const links = {
   workbookCheckout: 'https://buy.stripe.com/14AdR1crocGg3PU1qq0sU01',
   workshopFormEndpoint: '',
   contactFormEndpoint: '',
-  scorecardFormEndpoint: ''
+  scorecardFormEndpoint: 'https://assets.mailerlite.com/jsonp/2477010/forms/191569982585308327/subscribe'
 };
