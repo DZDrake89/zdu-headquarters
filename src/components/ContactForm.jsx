@@ -17,7 +17,7 @@ export default function ContactForm({ type = 'contact' }) {
     };
     if (endpoint) {
       try {
-        const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
         if (!response.ok) throw new Error();
         setStatus('Thanks - your message has been received.');
         event.currentTarget.reset();
