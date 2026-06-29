@@ -159,6 +159,8 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 .product-content > p { color: #6d6961; font-size: .91rem; }
 .product-subtitle { min-height: 45px; color: var(--black) !important; font-weight: 800; }
 .product-content .button { margin-top: 10px; }
+.product-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.product-actions .button { flex: 1 1 210px; margin-top: 0; }
 .product-card-featured { border-color: rgba(212,175,55,.65); }
 
 .coaching-banner { color: white; background: linear-gradient(120deg,#101010,#1c180c); border-top: 1px solid rgba(212,175,55,.28); border-bottom: 1px solid rgba(212,175,55,.28); }
@@ -282,6 +284,7 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 .workshop-visual p { color: #858179; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
 .form-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 90px; }
 .contact-form { display: grid; gap: 20px; padding: 40px; background: white; border: 1px solid var(--line); border-radius: 22px; }
+.form-honey { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
 .field-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; }
 .contact-form label { display: grid; gap: 8px; font-size: .72rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
 .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 15px; background: #f4f2ec; border: 1px solid transparent; border-radius: 10px; outline: 0; resize: vertical; }

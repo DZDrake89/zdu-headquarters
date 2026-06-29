@@ -10,7 +10,7 @@ export const products = [
     description: 'Discover your confidence score and uncover the hidden habits, beliefs, and patterns holding you back.',
     image: '/assets/confidence-scorecard.png',
     cta: 'Take the Free Scorecard',
-    href: links.scorecard,
+    href: '/scorecard',
     featured: false
   },
   {
@@ -47,8 +47,8 @@ export const products = [
     subtitle: 'Build calm. Build confidence. Build your life.',
     description: 'A transformational coaching experience to build self-trust, reduce anxiety, develop emotional resilience, and create consistent action.',
     image: '/assets/accelerator-thumbnail.png',
-    cta: 'Book a Free Call',
-    href: links.calendly,
+    cta: 'Explore the Accelerator',
+    href: '/accelerator',
     featured: false
   }
 ];

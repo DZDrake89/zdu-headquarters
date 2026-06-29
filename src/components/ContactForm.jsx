@@ -8,7 +8,13 @@ export default function ContactForm({ type = 'contact' }) {
 
   const submit = async (event) => {
     event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
+    const data = {
+      ...Object.fromEntries(new FormData(event.currentTarget)),
+      _subject: isWorkshop ? 'New ZDU Workshop Information Request' : 'New ZDU Contact Message',
+      _template: 'table',
+      _url: window.location.href,
+      source: isWorkshop ? 'ZDU Workshops Page' : 'ZDU Contact Page'
+    };
     if (endpoint) {
       try {
         const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
@@ -23,6 +29,7 @@ export default function ContactForm({ type = 'contact' }) {
 
   return (
     <form className="contact-form" onSubmit={submit}>
+      <input className="form-honey" name="_honey" tabIndex="-1" autoComplete="off" aria-hidden="true" />
       <div className="field-row">
         <label>Name<input name="name" required autoComplete="name" /></label>
         <label>Email<input name="email" type="email" required autoComplete="email" /></label>
