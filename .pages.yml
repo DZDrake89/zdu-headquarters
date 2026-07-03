@@ -1,0 +1,109 @@
+media:
+  - name: post_images
+    label: Blog and video images
+    input: public/uploads
+    output: /uploads
+    rename: safe
+    extensions: [png, jpg, jpeg, webp]
+
+content:
+  - name: posts
+    label: Blog and Video Posts
+    type: collection
+    path: src/content/posts
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{fields.slug}.md"
+      field: false
+    exclude: ["README.md"]
+    view:
+      primary: title
+      fields: [title, type, published, date]
+      sort: date
+      order: desc
+      search: [title, excerpt, category]
+    fields:
+      - name: title
+        label: Post title
+        type: string
+        required: true
+      - name: slug
+        label: URL slug
+        type: string
+        required: true
+        description: "Lowercase words separated by hyphens, such as build-self-trust. Do not change this after publishing."
+        pattern:
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          message: "Use lowercase letters, numbers, and hyphens only."
+      - name: published
+        label: Published
+        type: boolean
+        default: false
+        description: "Turn this on when the post is ready to appear on the website."
+      - name: featured
+        label: Featured post
+        type: boolean
+        default: false
+      - name: type
+        label: Post type
+        type: select
+        required: true
+        options:
+          values:
+            - name: article
+              label: Blog article
+            - name: video
+              label: Video post
+      - name: category
+        label: Category
+        type: string
+        required: true
+        description: "Examples: Self-Trust, Anxiety, Overthinking, Leadership, ADHD, Faith."
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: string
+        default: "Zacc Drake"
+        required: true
+      - name: excerpt
+        label: Short description
+        type: text
+        required: true
+        options:
+          minlength: 30
+          maxlength: 240
+      - name: image
+        label: Cover image or video thumbnail
+        type: image
+        options:
+          media: post_images
+          path: public/uploads
+          extensions: [png, jpg, jpeg, webp]
+          rename: safe
+      - name: video_url
+        label: YouTube or Vimeo URL
+        type: string
+        description: "Required only for video posts. Paste the full YouTube or Vimeo link."
+      - name: body
+        label: Post content
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          media: post_images
+          path: public/uploads
+          rename: safe
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "content: publish {filename}"
+      update: "content: update {filename}"
+      delete: "content: remove {filename}"
+      rename: "content: rename {oldFilename} to {newFilename}"

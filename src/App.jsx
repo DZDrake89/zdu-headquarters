@@ -10,6 +10,7 @@ import Accelerator from './pages/Accelerator';
 import Coaching from './pages/Coaching';
 import Workshops from './pages/Workshops';
 import Resources from './pages/Resources';
+import ResourcePost from './pages/ResourcePost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/coaching" element={<Coaching />} />
       <Route path="/workshops" element={<Workshops />} />
       <Route path="/resources" element={<Resources />} />
+      <Route path="/resources/:slug" element={<ResourcePost />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Route>
