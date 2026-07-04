@@ -46,6 +46,23 @@ export const formatPostDate = (date) => new Intl.DateTimeFormat('en-US', {
   month: 'long', day: 'numeric', year: 'numeric'
 }).format(new Date(`${date}T12:00:00`));
 
+const imagePositions = {
+  center: 'center center',
+  top: 'center top',
+  bottom: 'center bottom',
+  left: 'left center',
+  right: 'right center',
+  'top-left': 'left top',
+  'top-right': 'right top',
+  'bottom-left': 'left bottom',
+  'bottom-right': 'right bottom'
+};
+
+const imageCrops = new Set(['landscape', 'wide', 'square', 'portrait', 'original']);
+
+export const getImagePosition = (post) => imagePositions[post.image_position] || imagePositions.center;
+export const getImageCropClass = (post) => `image-crop-${imageCrops.has(post.image_crop) ? post.image_crop : 'landscape'}`;
+
 export const getVideoEmbed = (url = '') => {
   try {
     const parsed = new URL(url);

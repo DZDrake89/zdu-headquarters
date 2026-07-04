@@ -2,7 +2,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ResourceCard from '../components/ResourceCard';
-import { formatPostDate, getPost, getVideoEmbed, markdownToHtml, posts } from '../content/posts';
+import { formatPostDate, getImageCropClass, getImagePosition, getPost, getVideoEmbed, markdownToHtml, posts } from '../content/posts';
 import NotFound from './NotFound';
 
 export default function ResourcePost() {
@@ -26,7 +26,7 @@ export default function ResourcePost() {
       <div className="container resource-post-content">
         {post.type === 'video' && embedUrl && <div className="video-embed"><iframe src={embedUrl} title={post.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>}
         {post.type === 'video' && !embedUrl && post.video_url && <a className="button button-primary external-video-link" href={post.video_url} target="_blank" rel="noreferrer">Watch the video<ExternalLink size={17}/></a>}
-        {post.image && post.type !== 'video' && <img className="resource-post-cover" src={post.image} alt="" />}
+        {post.image && post.type !== 'video' && <img className={`resource-post-cover ${getImageCropClass(post)}`} src={post.image} alt="" style={{ objectPosition: getImagePosition(post) }} />}
         <div className="article-body" dangerouslySetInnerHTML={{ __html: markdownToHtml(post.body) }} />
       </div>
     </article>

@@ -33,6 +33,10 @@ The editor reads its fields from `.pages.yml` in the repository.
 
 Leave **Published** turned off to save a draft without showing it on the website.
 
+## Crop and reposition a cover photo
+
+After uploading the cover image, use **Photo crop shape** to choose landscape, wide, square, portrait, or the full original image. Use **Photo focus position** to keep the important part of the photo visible when it is cropped. These settings control both the resource card focus and the full article cover without changing the original file.
+
 ## What happens after saving
 
 Pages CMS commits the content to GitHub. Vercel detects the change and normally republishes the site within a minute or two.

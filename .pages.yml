@@ -83,6 +83,48 @@ content:
           path: public/uploads
           extensions: [png, jpg, jpeg, webp]
           rename: safe
+      - name: image_crop
+        label: Photo crop shape
+        type: select
+        default: landscape
+        description: "Choose how the cover photo is cropped on the full post page. The resource cards stay a consistent landscape shape."
+        options:
+          values:
+            - name: landscape
+              label: Landscape (16:9)
+            - name: wide
+              label: Wide banner (2:1)
+            - name: square
+              label: Square (1:1)
+            - name: portrait
+              label: Portrait (4:5)
+            - name: original
+              label: Show the full photo
+      - name: image_position
+        label: Photo focus position
+        type: select
+        default: center
+        description: "Choose which part of the photo stays visible when it is cropped. For portraits, Top or Center usually works best."
+        options:
+          values:
+            - name: center
+              label: Center
+            - name: top
+              label: Top
+            - name: bottom
+              label: Bottom
+            - name: left
+              label: Left
+            - name: right
+              label: Right
+            - name: top-left
+              label: Top left
+            - name: top-right
+              label: Top right
+            - name: bottom-left
+              label: Bottom left
+            - name: bottom-right
+              label: Bottom right
       - name: video_url
         label: YouTube or Vimeo URL
         type: string

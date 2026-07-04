@@ -338,7 +338,11 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 .resource-post-excerpt { max-width: 760px; margin: 28px 0; color: #c4c0b8; font-size: 1.2rem; }
 .resource-post-meta { display: flex; flex-wrap: wrap; gap: 20px; color: #87837c; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .resource-post-content { max-width: 900px; padding-top: 85px; padding-bottom: 105px; }
-.resource-post-cover { width: 100%; max-height: 620px; margin-bottom: 55px; object-fit: cover; border-radius: 20px; }
+.resource-post-cover { display: block; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 55px; object-fit: cover; background: #111; border-radius: 20px; }
+.resource-post-cover.image-crop-wide { aspect-ratio: 2 / 1; }
+.resource-post-cover.image-crop-square { width: min(100%,700px); aspect-ratio: 1; margin-inline: auto; }
+.resource-post-cover.image-crop-portrait { width: min(100%,620px); aspect-ratio: 4 / 5; margin-inline: auto; }
+.resource-post-cover.image-crop-original { aspect-ratio: auto; object-fit: contain; }
 .video-embed { position: relative; width: 100%; margin-bottom: 55px; padding-top: 56.25%; background: #111; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,.16); }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .external-video-link { margin-bottom: 45px; }
