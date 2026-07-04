@@ -1,17 +1,15 @@
 ---
-title: "How to Interrupt the Overthinking Loop"
-slug: "interrupt-the-overthinking-loop"
-published: true
+title: How to Interrupt the Overthinking Loop
+slug: interrupt-the-overthinking-loop
+published: false
 featured: false
-type: "article"
-category: "Overthinking"
-date: "2026-07-03"
-author: "Zacc Drake"
-excerpt: "Overthinking feels like preparation, but it often becomes avoidance. Use this simple reset to return to calm, clarity, and action."
-image: ""
-video_url: ""
+type: article
+category: Overthinking
+date: 2026-07-03
+author: Zacc Drake
+excerpt: Overthinking feels like preparation, but it often becomes avoidance.
+  Use this simple reset to return to calm, clarity, and action.
 ---
-
 Overthinking can feel productive because your mind is busy. You replay possibilities, search for certainty, and try to prevent every negative outcome.
 
 The problem is that thinking can quietly replace deciding.
