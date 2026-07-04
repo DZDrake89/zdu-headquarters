@@ -1,7 +1,7 @@
 ---
 title: Why Confidence Is Built, Not Found
 slug: confidence-is-built-not-found
-published: true
+published: false
 featured: true
 type: article
 category: Self-Trust
