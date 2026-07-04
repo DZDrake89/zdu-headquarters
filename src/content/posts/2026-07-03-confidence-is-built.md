@@ -1,11 +1,11 @@
 ---
 title: Why Confidence Is Built, Not Found
 slug: confidence-is-built-not-found
-published: false
+published: true
 featured: true
 type: article
 category: Self-Trust
-date: 2026-07-03
+date: 2026-07-04
 author: Zacc Drake
 excerpt: Real confidence is not something you discover. It is evidence you build
   through promises, action, and repetition.
