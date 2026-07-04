@@ -9,6 +9,7 @@ date: 2026-07-04
 author: Zacc Drake
 excerpt: Real confidence is not something you discover. It is evidence you build
   through promises, action, and repetition.
+image: /uploads/img6526.jpeg
 ---
 Confidence is often treated like a feeling you either have or you do not. That belief keeps capable people waiting for a moment when fear disappears and certainty arrives.
 
