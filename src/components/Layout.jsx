@@ -20,7 +20,7 @@ export default function Layout() {
   }, []);
   useEffect(() => {
     if (location.pathname !== '/' || window.sessionStorage.getItem(scorecardDismissedKey)) return undefined;
-    const timer = window.setTimeout(() => setScorecardOpen(true), 3600);
+    const timer = window.setTimeout(() => setScorecardOpen(true), 22000);
     return () => window.clearTimeout(timer);
   }, [location.pathname]);
   useEffect(() => {

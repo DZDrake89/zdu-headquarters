@@ -7,6 +7,24 @@ import { products } from '../config/products';
 
 const heroPhoto = '/assets/zacc-face-forward-hero.jpg';
 
+const heroSlides = [
+  {
+    image: heroPhoto,
+    position: '35% 46%',
+    size: 'auto 98%'
+  },
+  {
+    image: '/uploads/img4010.jpeg',
+    position: '37% 25%',
+    size: 'auto 108%'
+  },
+  {
+    image: '/uploads/img6495.jpeg',
+    position: '37% 28%',
+    size: 'auto 108%'
+  }
+];
+
 const feedItems = [
   {
     eyebrow: 'Start Here',
@@ -114,7 +132,19 @@ export default function Home() {
       />
       <div className="zdu-face-home">
         <section className="zdu-face-hero" aria-labelledby="home-hero-title">
-          <div className="zdu-hero-photo" aria-hidden="true" />
+          <div className="zdu-hero-photo" aria-hidden="true">
+            {heroSlides.map((slide) => (
+              <span
+                className="zdu-hero-slide"
+                key={slide.image}
+                style={{
+                  backgroundImage: `url("${slide.image}")`,
+                  backgroundPosition: slide.position,
+                  backgroundSize: slide.size
+                }}
+              />
+            ))}
+          </div>
           <div className="zdu-hero-grid" aria-hidden="true" />
 
           <div className="zdu-watch-intro">
