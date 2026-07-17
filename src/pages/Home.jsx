@@ -4,25 +4,34 @@ import SEO from '../components/SEO';
 import CTAButton from '../components/CTAButton';
 import { links } from '../config/links';
 import { products } from '../config/products';
+import { brand } from '../config/brand';
 
-const heroPhoto = '/assets/zacc-face-forward-hero.jpg';
+const zduHeroPath = '/uploads/zdu-hero/optimized';
 
 const heroSlides = [
   {
-    image: heroPhoto,
-    position: '42% 42%',
-    size: 'cover'
+    image: `${zduHeroPath}/zacc-maroon-center.jpeg`,
+    position: 'center 36%',
+    size: 'auto 118%'
   },
   {
-    image: '/uploads/img4010.jpeg',
-    position: '40% 26%',
-    size: 'cover'
+    image: `${zduHeroPath}/zacc-cafe-wide.jpeg`,
+    position: '34% 42%',
+    size: 'auto 112%'
   },
   {
-    image: '/uploads/img6495.jpeg',
-    position: '42% 24%',
-    size: 'cover'
+    image: `${zduHeroPath}/zacc-archway.jpeg`,
+    position: 'center 46%',
+    size: 'auto 110%'
   }
+];
+
+const heroWallPhotos = [
+  { image: `${zduHeroPath}/zacc-maroon-wide.jpeg`, position: 'center 34%' },
+  { image: `${zduHeroPath}/zacc-black-portrait.jpeg`, position: 'center 28%' },
+  { image: `${zduHeroPath}/zacc-cafe-centered.jpeg`, position: 'center 34%' },
+  { image: `${zduHeroPath}/zacc-archway.jpeg`, position: 'center 42%' },
+  { image: `${zduHeroPath}/zacc-desk-profile.jpeg`, position: 'center 42%' }
 ];
 
 const feedItems = [
@@ -32,8 +41,8 @@ const feedItems = [
     description: 'Find out what is actually blocking your momentum before you try to fix everything.',
     type: 'Free Assessment',
     href: '/scorecard',
-    image: '/uploads/img4010.jpeg',
-    position: 'center 18%'
+    image: `${zduHeroPath}/zacc-cafe-wide.jpeg`,
+    position: 'center 32%'
   },
   {
     eyebrow: 'New Resource',
@@ -41,8 +50,8 @@ const feedItems = [
     description: 'A simple rhythm for reducing mental chaos and making cleaner decisions.',
     type: 'Workbook',
     href: '/workbook',
-    image: heroPhoto,
-    position: 'center 34%'
+    image: `${zduHeroPath}/zacc-cafe-centered.jpeg`,
+    position: 'center 28%'
   },
   {
     eyebrow: 'Coaching',
@@ -50,8 +59,8 @@ const feedItems = [
     description: 'Build self-trust, identity, courage, consistency, and proof with weekly support.',
     type: '1:1 Program',
     href: '/accelerator',
-    image: '/uploads/img6526.jpeg',
-    position: 'center 18%'
+    image: `${zduHeroPath}/zacc-maroon-center.jpeg`,
+    position: 'center 28%'
   }
 ];
 
@@ -133,6 +142,18 @@ export default function Home() {
       <div className="zdu-face-home">
         <section className="zdu-face-hero" aria-labelledby="home-hero-title">
           <div className="zdu-hero-photo" aria-hidden="true">
+            <div className="zdu-hero-photo-wall">
+              {heroWallPhotos.map((photo, index) => (
+                <span
+                  className={`zdu-hero-tile zdu-hero-tile-${index + 1}`}
+                  key={photo.image}
+                  style={{
+                    backgroundImage: `url("${photo.image}")`,
+                    backgroundPosition: photo.position
+                  }}
+                />
+              ))}
+            </div>
             {heroSlides.map((slide) => (
               <span
                 className="zdu-hero-slide"
@@ -156,6 +177,13 @@ export default function Home() {
           </div>
 
           <div className="zdu-face-hero-copy">
+            <div className="zdu-hero-center-logo">
+              <img src={brand.logo} alt="" aria-hidden="true" />
+              <span>
+                <strong>{brand.name}</strong>
+                <small>Calm Confidence Coaching</small>
+              </span>
+            </div>
             <p className="zdu-face-eyebrow">Calm Confidence • Mentor • Results Builder</p>
             <h1 id="home-hero-title">Zacc<br />Drake</h1>
             <p>
@@ -321,9 +349,9 @@ export default function Home() {
             </div>
           </div>
           <div className="zdu-connect-gallery">
-            <img src={heroPhoto} alt="Zacc Drake portrait in a gray beanie" loading="lazy" />
-            <img src="/uploads/img6495.jpeg" alt="Zacc Drake smiling in a beanie" loading="lazy" />
-            <img src="/uploads/img6526.jpeg" alt="Zacc Drake standing in maroon shirt" loading="lazy" />
+            <img src={`${zduHeroPath}/zacc-cafe-wide.jpeg`} alt="Zacc Drake seated with laptop in a gray beanie" loading="lazy" />
+            <img src={`${zduHeroPath}/zacc-black-close.jpeg`} alt="Zacc Drake smiling in a black shirt" loading="lazy" />
+            <img src={`${zduHeroPath}/zacc-maroon-center.jpeg`} alt="Zacc Drake standing in a maroon shirt" loading="lazy" />
           </div>
         </section>
 
