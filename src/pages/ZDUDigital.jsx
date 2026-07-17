@@ -1,4 +1,5 @@
-import { BadgeCheck, Brush, Check, MonitorSmartphone, PanelsTopLeft, Rocket, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, BadgeCheck, Brush, Check, Layers, MonitorSmartphone, PanelsTopLeft, Rocket, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import HeroSection from '../components/HeroSection';
 import SectionHeader from '../components/SectionHeader';
@@ -33,6 +34,44 @@ const process = [
   'Build a real working preview with copy, images, CTAs, product mockups, and conversion structure.',
   'Polish desktop and mobile, deploy the preview, and give the client something they can confidently send today.'
 ];
+
+function BeforeAfterSlider() {
+  const [position, setPosition] = useState(58);
+
+  return (
+    <div className="revamp-slider-shell">
+      <div className="revamp-slider" style={{ '--split': `${position}%` }}>
+        <img
+          className="revamp-image revamp-before"
+          src="/assets/case-studies/zdu-before-revamp.jpg"
+          alt="Zacc Drake Unlimited website before the ZDU Digital redesign"
+          loading="lazy"
+        />
+        <div className="revamp-after-wrap" aria-hidden="true">
+          <img
+            className="revamp-image revamp-after"
+            src="/assets/case-studies/zdu-after-revamp.jpg"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <span className="revamp-label revamp-label-before">Before</span>
+        <span className="revamp-label revamp-label-after">After</span>
+        <div className="revamp-divider" aria-hidden="true"><span /></div>
+        <input
+          className="revamp-range"
+          type="range"
+          min="8"
+          max="92"
+          value={position}
+          onChange={(event) => setPosition(Number(event.target.value))}
+          aria-label="Compare the Zacc Drake Unlimited website before and after the redesign"
+        />
+      </div>
+      <p className="revamp-slider-caption">Slide to compare the original live site direction against the new face-forward Zacc Drake Unlimited rebuild.</p>
+    </div>
+  );
+}
 
 export default function ZDUDigital() {
   return <>
@@ -74,6 +113,46 @@ export default function ZDUDigital() {
           <p><BadgeCheck /> Built for people who need to present, pitch, launch, or sell with confidence.</p>
           <p><BadgeCheck /> Designed as real websites and launch systems, not flat “someday” mockups.</p>
           <p><BadgeCheck /> Flexible enough for personal brands, service providers, creators, coaches, local businesses, and productized offers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="section digital-revamp-section" id="zdu-revamp-proof">
+      <div className="container digital-revamp-layout">
+        <div className="digital-revamp-copy">
+          <p className="eyebrow"><span />Live proof</p>
+          <h2>Zacc Drake Unlimited, rebuilt as a face-forward confidence brand.</h2>
+          <p>
+            The old site carried the pieces. The new version turns the whole ecosystem into a clearer personal brand:
+            coaching, products, proof, video, and ZDU Digital all working from one confident path.
+          </p>
+          <div className="digital-revamp-points">
+            <article>
+              <span>Before</span>
+              <strong>Brand-heavy, less personal</strong>
+              <p>The offer existed, but the human trust signal was not leading the experience.</p>
+            </article>
+            <article>
+              <span>After</span>
+              <strong>Face-forward launch system</strong>
+              <p>The site now feels like a real coaching ecosystem with cleaner products, proof, and direction.</p>
+            </article>
+            <article>
+              <span>Upgrade</span>
+              <strong>Digital confidence bridge</strong>
+              <p>ZDU Digital becomes the next step for people whose offer is ready but online presence is not.</p>
+            </article>
+          </div>
+          <a className="digital-revamp-link" href="/contact?interest=digital">
+            Start Your Own Digital Revamp <ArrowRight />
+          </a>
+        </div>
+        <div className="digital-revamp-visual">
+          <div className="digital-revamp-kicker">
+            <Layers />
+            <span>Before / After Website System</span>
+          </div>
+          <BeforeAfterSlider />
         </div>
       </div>
     </section>
