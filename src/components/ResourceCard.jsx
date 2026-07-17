@@ -9,7 +9,7 @@ export default function ResourceCard({ post }) {
   const image = post.image || (isVideo && youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : '');
   return <article className="resource-card">
     <Link className={`resource-card-media ${image ? '' : 'resource-card-placeholder'}`} to={`/resources/${post.slug}`} aria-label={`Open ${post.title}`}>
-      {image ? <img src={image} alt="" loading="lazy" style={{ objectPosition: getImagePosition(post) }} /> : <Icon aria-hidden="true" />}
+      {image ? <img src={image} alt={`${post.title} preview`} loading="lazy" style={{ objectPosition: getImagePosition(post) }} /> : <Icon aria-hidden="true" />}
       <span>{isVideo ? 'Watch' : 'Read'}</span>
     </Link>
     <div className="resource-card-body">

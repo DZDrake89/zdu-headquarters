@@ -9,12 +9,25 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <img src={brand.logo} alt={brand.name} />
+          <div className="footer-lockup">
+            <img src={brand.logo} alt="" aria-hidden="true" />
+            <span>
+              <strong>{brand.name}</strong>
+              <small>Calm Confidence Coaching</small>
+            </span>
+          </div>
           <p>{brand.tagline}</p>
         </div>
         <div className="footer-nav">
           <p className="footer-label">Explore</p>
-          {siteConfig.navigation.slice(0, 4).map((item) => <Link key={item.href} to={item.href}>{item.label}</Link>)}
+          {siteConfig.navigation.map((item) => <Link key={item.href} to={item.href}>{item.label}</Link>)}
+        </div>
+        <div className="footer-nav">
+          <p className="footer-label">Programs</p>
+          <Link to="/products">Products</Link>
+          <Link to="/accelerator">Accelerator</Link>
+          <Link to="/workshops">Workshops</Link>
+          <Link to="/zdu-digital">ZDU Digital</Link>
         </div>
         <div className="footer-nav">
           <p className="footer-label">Connect</p>
@@ -29,7 +42,7 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <p>© {new Date().getFullYear()} {brand.name}. All rights reserved.</p>
-        <p>Educational content only. Not a substitute for professional mental health care.</p>
+        <div className="footer-legal-links"><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link><Link to="/refund-policy">Refunds</Link><Link to="/accessibility">Accessibility</Link></div>
       </div>
     </footer>
   );

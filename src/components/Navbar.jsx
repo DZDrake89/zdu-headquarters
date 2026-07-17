@@ -14,7 +14,11 @@ export default function Navbar({ onScorecard }) {
     <header className="site-header">
       <div className="container nav-shell">
         <Link className="brand-link" to="/" aria-label={`${brand.name} home`}>
-          <img src={brand.logo} alt={brand.name} />
+          <img src={brand.logo} alt="" aria-hidden="true" />
+          <span className="brand-wordmark">
+            <strong>{brand.name}</strong>
+            <small>Calm Confidence Coaching</small>
+          </span>
         </Link>
         <nav className={`main-nav ${open ? 'is-open' : ''}`} aria-label="Primary navigation">
           {siteConfig.navigation.map((item) => (

@@ -8,11 +8,13 @@ import Ebook from './pages/Ebook';
 import Workbook from './pages/Workbook';
 import Accelerator from './pages/Accelerator';
 import Coaching from './pages/Coaching';
+import ZDUDigital from './pages/ZDUDigital';
 import Workshops from './pages/Workshops';
 import Resources from './pages/Resources';
 import ResourcePost from './pages/ResourcePost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Legal from './pages/Legal';
 
 export default function App() {
   return <Routes>
@@ -25,10 +27,15 @@ export default function App() {
       <Route path="/workbook" element={<Workbook />} />
       <Route path="/accelerator" element={<Accelerator />} />
       <Route path="/coaching" element={<Coaching />} />
+      <Route path="/zdu-digital" element={<ZDUDigital />} />
       <Route path="/workshops" element={<Workshops />} />
       <Route path="/resources" element={<Resources />} />
       <Route path="/resources/:slug" element={<ResourcePost />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/privacy" element={<Legal type="privacy" />} />
+      <Route path="/terms" element={<Legal type="terms" />} />
+      <Route path="/refund-policy" element={<Legal type="refunds" />} />
+      <Route path="/accessibility" element={<Legal type="accessibility" />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>;

@@ -2,7 +2,7 @@ import CTAButton from './CTAButton';
 
 export default function HeroSection({ eyebrow, title, description, primary, secondary, media, children, compact = false }) {
   return (
-    <section className={`hero ${compact ? 'hero-compact' : ''}`}>
+    <section className={`hero ${compact ? 'hero-compact' : ''} ${media ? 'hero-with-media' : 'hero-no-media'}`}>
       <div className="hero-grid-lines" aria-hidden="true" />
       <div className="container hero-layout">
         <div className="hero-content reveal">

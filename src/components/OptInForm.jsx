@@ -20,6 +20,7 @@ export default function OptInForm({ modal = false, onClose }) {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: payload.toString()
         });
+        window.gtag?.('event', 'scorecard_opt_in', { form_name: 'ZDU Confidence Scorecard' });
         setStatus('Success! Opening your scorecard now.');
         window.setTimeout(() => window.location.assign(links.scorecard), 450);
       } catch { setStatus('Please try again or use the direct scorecard link.'); }

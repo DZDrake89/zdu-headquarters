@@ -1,7 +1,7 @@
 ---
 title: How to Interrupt the Overthinking Loop
 slug: interrupt-the-overthinking-loop
-published: false
+published: true
 featured: false
 type: article
 category: Overthinking
