@@ -10,18 +10,18 @@ const heroPhoto = '/assets/zacc-face-forward-hero.jpg';
 const heroSlides = [
   {
     image: heroPhoto,
-    position: '35% 46%',
-    size: 'auto 98%'
+    position: '42% 42%',
+    size: 'cover'
   },
   {
     image: '/uploads/img4010.jpeg',
-    position: '37% 25%',
-    size: 'auto 108%'
+    position: '40% 26%',
+    size: 'cover'
   },
   {
     image: '/uploads/img6495.jpeg',
-    position: '37% 28%',
-    size: 'auto 108%'
+    position: '42% 24%',
+    size: 'cover'
   }
 ];
 

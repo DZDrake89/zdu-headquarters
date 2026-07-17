@@ -799,7 +799,7 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 .zdu-face-home .button-ghost:hover { color: #080604; background: var(--face-paper); }
 .zdu-face-hero {
   position: relative;
-  min-height: 980px;
+  min-height: min(980px, 100svh);
   isolation: isolate;
   background:
     radial-gradient(circle at 76% 45%, rgba(210, 161, 58, .18), transparent 25%),
@@ -814,26 +814,41 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
     radial-gradient(circle at 39% 36%, rgba(210, 161, 58, .12), transparent 26%),
     #050403;
 }
+.zdu-hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at 38% 24%, rgba(255, 248, 234, .12), transparent 26%),
+    linear-gradient(115deg, rgba(5, 4, 3, .22), transparent 34%, rgba(210, 161, 58, .08) 58%, transparent 78%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 .zdu-hero-photo::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 4;
   background:
-    linear-gradient(90deg, rgba(5, 4, 3, .98) 0%, rgba(5, 4, 3, .72) 24%, rgba(5, 4, 3, .18) 49%, rgba(5, 4, 3, .68) 72%, rgba(5, 4, 3, .96) 100%),
-    linear-gradient(0deg, rgba(5, 4, 3, .82), rgba(5, 4, 3, .05) 42%, rgba(5, 4, 3, .75));
+    linear-gradient(90deg, rgba(5, 4, 3, .96) 0%, rgba(5, 4, 3, .68) 23%, rgba(5, 4, 3, .1) 50%, rgba(5, 4, 3, .68) 73%, rgba(5, 4, 3, .96) 100%),
+    linear-gradient(0deg, rgba(5, 4, 3, .86), rgba(5, 4, 3, .04) 42%, rgba(5, 4, 3, .72));
   pointer-events: none;
 }
 .zdu-hero-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
+  background-size: cover !important;
   background-repeat: no-repeat;
-  filter: saturate(.86) contrast(1.09) brightness(.76);
+  filter: saturate(.9) contrast(1.08) brightness(.72);
   transform: scale(1.025) translateX(-10px);
   animation: zduHeroSlideShow 18s infinite;
   will-change: opacity, transform;
 }
+.zdu-hero-slide:nth-child(1) { background-position: 42% 42% !important; }
+.zdu-hero-slide:nth-child(2) { background-position: 40% 24% !important; }
+.zdu-hero-slide:nth-child(3) { background-position: 42% 24% !important; }
 .zdu-hero-slide:nth-child(2) { animation-delay: 6s; }
 .zdu-hero-slide:nth-child(3) { animation-delay: 12s; }
 @keyframes zduHeroSlideShow {
@@ -984,8 +999,14 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
 }
 @media (max-width: 900px) {
   .zdu-face-hero { min-height: 900px; }
-  .zdu-hero-photo::after { background: linear-gradient(180deg, rgba(5, 4, 3, .48), rgba(5, 4, 3, .14) 35%, rgba(5, 4, 3, .96) 82%); }
-  .zdu-hero-slide { background-size: auto 66% !important; background-position: 68% 4% !important; }
+  .zdu-hero-photo::after {
+    background:
+      linear-gradient(180deg, rgba(5, 4, 3, .36), rgba(5, 4, 3, .08) 30%, rgba(5, 4, 3, .96) 79%),
+      linear-gradient(90deg, rgba(5, 4, 3, .52), rgba(5, 4, 3, .14) 46%, rgba(5, 4, 3, .7));
+  }
+  .zdu-hero-slide { background-size: cover !important; background-position: 52% 10% !important; }
+  .zdu-hero-slide:nth-child(2) { background-position: 52% 12% !important; }
+  .zdu-hero-slide:nth-child(3) { background-position: 50% 12% !important; }
   .zdu-face-hero-copy { top: auto; left: 24px; right: 24px; bottom: 165px; width: auto; }
   .zdu-hero-microcopy { margin-top: 28px; }
   .zdu-watch-intro { bottom: 34px; }
@@ -1014,6 +1035,9 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
   }
   .zdu-face-home .button { width: 100%; }
   .zdu-face-hero { min-height: 860px; }
+  .zdu-hero-slide { background-size: cover !important; background-position: 50% 8% !important; }
+  .zdu-hero-slide:nth-child(2) { background-position: 50% 10% !important; }
+  .zdu-hero-slide:nth-child(3) { background-position: 50% 10% !important; }
   .zdu-face-hero-copy {
     left: 24px;
     right: auto;
@@ -1332,7 +1356,7 @@ body {
 .site-main-inner .hero-description {
   width: min(720px, calc(100vw - 32px));
   max-width: 100%;
-  color: rgba(255, 248, 234, .74);
+  color: rgba(255, 248, 234, .86);
   font-size: clamp(1rem, 1.35vw, 1.18rem);
   line-height: 1.52;
   font-weight: 780;
@@ -1424,7 +1448,7 @@ body {
 .digital-services-section .section-description,
 .real-testimonials-section .section-description,
 .proof-standard-section .section-description {
-  color: rgba(255, 248, 234, .66);
+  color: rgba(255, 248, 234, .84);
 }
 
 .feature-grid,
@@ -1508,7 +1532,7 @@ body {
 .digital-service-grid p,
 .coach-proof-grid p,
 .real-testimonial-card span {
-  color: rgba(255, 248, 234, .66);
+  color: rgba(255, 248, 234, .82);
 }
 
 .site-main-inner > .section:not(.framework-section):not(.values-section):not(.comparison-section):not(.preview-gallery):not(.digital-services-section):not(.real-testimonials-section):not(.proof-standard-section) .feature-card p,
@@ -1556,7 +1580,7 @@ body {
 
 .product-card-featured .product-subtitle,
 .product-card-featured .product-content p {
-  color: rgba(255, 248, 234, .68);
+  color: rgba(255, 248, 234, .84);
 }
 
 .pricing-card {
@@ -1568,7 +1592,7 @@ body {
 
 .pricing-card p,
 .pricing-card li {
-  color: rgba(255, 248, 234, .72);
+  color: rgba(255, 248, 234, .84);
 }
 
 .pricing-price,
@@ -1626,7 +1650,7 @@ body {
 .proof-standard-card p,
 .testimonial-proof-note p,
 .real-testimonial-card blockquote {
-  color: rgba(255, 248, 234, .72);
+  color: rgba(255, 248, 234, .84);
 }
 
 .coach-video-card {
@@ -2112,7 +2136,7 @@ body {
 
 .digital-revamp-copy > p:not(.eyebrow) {
   max-width: 610px;
-  color: rgba(255, 248, 234, .68);
+  color: rgba(255, 248, 234, .86);
   font-weight: 650;
 }
 
@@ -2155,7 +2179,7 @@ body {
 .digital-revamp-points p {
   grid-column: 2;
   margin: 0;
-  color: rgba(255, 248, 234, .62);
+  color: rgba(255, 248, 234, .8);
   font-size: .92rem;
 }
 
@@ -2195,7 +2219,7 @@ body {
   gap: 18px;
   margin-bottom: 16px;
   padding: 14px 16px;
-  color: rgba(255, 248, 234, .72);
+  color: rgba(255, 248, 234, .86);
   background: rgba(255, 248, 234, .055);
   border: 1px solid rgba(210, 161, 58, .24);
 }
@@ -2351,7 +2375,7 @@ body {
 
 .revamp-slider-caption {
   margin: 15px 0 0;
-  color: rgba(255, 248, 234, .56);
+  color: rgba(255, 248, 234, .74);
   font-size: .83rem;
   font-weight: 700;
   text-align: right;
@@ -2430,4 +2454,45 @@ body {
   .revamp-slider-caption {
     text-align: left;
   }
+}
+
+/* Final readability guardrails for the redesigned Coaching + ZDU Digital pages. */
+.site-main-inner .digital-browser-card p,
+.site-main-inner .confidence-readiness-copy > p:not(.eyebrow),
+.site-main-inner .coaching-banner p:not(.eyebrow),
+.site-main-inner .breakthrough-call-panel > p:not(.eyebrow),
+.site-main-inner .coach-proof-grid p,
+.site-main-inner .real-testimonial-featured span,
+.site-main-inner .included-list p,
+.site-main-inner .application-card p:not(.eyebrow),
+.site-main-inner .coaching-fit-card-dark li,
+.site-main-inner .proof-standard-card > div:first-child > p:not(.eyebrow),
+.site-main-inner .digital-proof-panel p,
+.site-main-inner .digital-service-grid p,
+.site-main-inner .digital-fit-card li,
+.site-main-inner .digital-revamp-copy > p:not(.eyebrow),
+.site-main-inner .digital-revamp-points p,
+.site-main-inner .digital-revamp-kicker {
+  color: rgba(255, 248, 234, .86);
+}
+
+.site-main-inner .call-steps p,
+.site-main-inner .pain-list p,
+.site-main-inner .breakthrough-steps p,
+.site-main-inner .coaching-fit-card:not(.coaching-fit-card-dark) li,
+.site-main-inner .digital-process-layout > div:first-child > p:not(.eyebrow),
+.site-main-inner .digital-process-list p {
+  color: #332a20;
+}
+
+.site-main-inner .digital-browser-card small,
+.site-main-inner .revamp-slider-caption {
+  color: rgba(255, 248, 234, .72);
+}
+
+.site-main-inner .digital-proof-panel {
+  background:
+    radial-gradient(circle at 92% 0, rgba(210, 161, 58, .2), transparent 34%),
+    #090706;
+  border-color: rgba(210, 161, 58, .32);
 }
