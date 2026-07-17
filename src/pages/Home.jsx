@@ -4,7 +4,6 @@ import SEO from '../components/SEO';
 import CTAButton from '../components/CTAButton';
 import { links } from '../config/links';
 import { products } from '../config/products';
-import { brand } from '../config/brand';
 
 const zduHeroPath = '/uploads/zdu-hero/optimized';
 
@@ -177,13 +176,6 @@ export default function Home() {
           </div>
 
           <div className="zdu-face-hero-copy">
-            <div className="zdu-hero-center-logo">
-              <img src={brand.logo} alt="" aria-hidden="true" />
-              <span>
-                <strong>{brand.name}</strong>
-                <small>Calm Confidence Coaching</small>
-              </span>
-            </div>
             <p className="zdu-face-eyebrow">Calm Confidence • Mentor • Results Builder</p>
             <h1 id="home-hero-title">Zacc<br />Drake</h1>
             <p>

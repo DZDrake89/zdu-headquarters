@@ -908,47 +908,6 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
   transform: translateX(-50%);
   text-align: center;
 }
-.zdu-hero-center-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: 0 auto 24px;
-  padding: 12px 20px 12px 14px;
-  color: #fff8ea;
-  background: rgba(5, 4, 3, .58);
-  border: 1px solid rgba(255, 248, 234, .16);
-  border-radius: 999px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
-  backdrop-filter: blur(20px);
-}
-.zdu-hero-center-logo img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  border-radius: 50%;
-}
-.zdu-hero-center-logo span {
-  display: grid;
-  gap: 3px;
-  text-align: left;
-}
-.zdu-hero-center-logo strong {
-  color: #fff8ea;
-  font-family: "Arial Black", Impact, sans-serif;
-  font-size: .78rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.zdu-hero-center-logo small {
-  color: var(--face-gold);
-  font-size: .58rem;
-  font-weight: 950;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
 .zdu-face-eyebrow, .zdu-face-section-title span, .zdu-story-copy span, .zdu-proof-wall > span, .zdu-connect-copy span, .zdu-digital-bridge span { display: block; color: var(--face-gold); text-transform: uppercase; letter-spacing: .24em; font-size: .69rem; font-weight: 950; }
 .zdu-face-hero-copy h1 { margin: 18px 0 0; color: #fff8ea; font-size: clamp(4.8rem, 9vw, 7rem); line-height: .82; letter-spacing: -.075em; text-shadow: 0 22px 80px rgba(0, 0, 0, .64); }
 .zdu-face-hero-copy > p:not(.zdu-face-eyebrow) { width: min(620px, 100%); margin: 22px auto 0; color: rgba(255, 255, 255, .88); font-size: clamp(1rem, 1.28vw, 1.2rem); line-height: 1.45; font-weight: 800; text-shadow: 0 12px 40px rgba(0, 0, 0, .82); }
@@ -1145,24 +1104,6 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
     transform: none;
     text-align: center;
   }
-  .zdu-hero-center-logo {
-    gap: 10px;
-    margin-bottom: 18px;
-    padding: 10px 13px 10px 10px;
-  }
-  .zdu-hero-center-logo img {
-    width: 34px;
-    height: 34px;
-  }
-  .zdu-hero-center-logo strong {
-    max-width: 188px;
-    font-size: .62rem;
-    letter-spacing: .06em;
-  }
-  .zdu-hero-center-logo small {
-    font-size: .48rem;
-    letter-spacing: .15em;
-  }
   .zdu-face-eyebrow,
   .zdu-face-section-title span,
   .zdu-story-copy span,
@@ -1324,6 +1265,96 @@ body {
   line-height: 1.1;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* Homepage hero brand choreography: use the real header logo as the centered hero mark. */
+body:has(.zdu-face-home) .site-header {
+  pointer-events: none;
+}
+
+body:has(.zdu-face-home) .site-header .nav-shell,
+body:has(.zdu-face-home) .site-header .main-nav,
+body:has(.zdu-face-home) .site-header .nav-actions,
+body:has(.zdu-face-home) .site-header .menu-button {
+  pointer-events: auto;
+}
+
+body:has(.zdu-face-home) .site-header .nav-shell {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+body:has(.zdu-face-home) .site-header .brand-link {
+  position: fixed;
+  z-index: 65;
+  top: clamp(112px, 12vw, 148px);
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: max-content;
+  max-width: min(88vw, 430px);
+  padding: 13px 22px 13px 15px;
+  color: #fff8ea;
+  background: rgba(5, 4, 3, .52);
+  border: 1px solid rgba(255, 248, 234, .16);
+  border-radius: 999px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .34);
+  backdrop-filter: blur(20px);
+  transform: translateX(-50%);
+  transform-origin: 50% 50%;
+  transition: opacity .45s ease, transform .45s ease, filter .45s ease;
+  animation: zduHeroBrandBreath 7.5s ease-in-out infinite;
+}
+
+body:has(.zdu-face-home) .site-header .brand-link img {
+  width: 44px;
+  height: 44px;
+}
+
+body:has(.zdu-face-home) .zdu-face-hero-copy {
+  top: clamp(220px, 22vw, 278px);
+}
+
+body:has(.zdu-face-home):has(.zdu-face-hero:hover) .site-header .brand-link,
+body:has(.zdu-face-home):has(.zdu-face-hero:focus-within) .site-header .brand-link {
+  opacity: .18;
+  filter: blur(.4px);
+  transform: translateX(-50%) translateY(-10px) scale(.96);
+  animation-play-state: paused;
+}
+
+body:has(.zdu-face-home) .site-header.site-header-home-away .brand-link {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(.6px);
+  transform: translateX(-50%) translateY(-18px) scale(.94);
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+@keyframes zduHeroBrandBreath {
+  0%,
+  100% {
+    opacity: .92;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px) scale(1.015);
+  }
+
+  72% {
+    opacity: .72;
+    transform: translateX(-50%) translateY(-8px) scale(.985);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(.zdu-face-home) .site-header .brand-link {
+    animation: none;
+  }
 }
 
 .main-nav {
@@ -2078,6 +2109,28 @@ body {
     letter-spacing: .2em;
   }
 
+  body:has(.zdu-face-home) .site-header .brand-link {
+    top: 92px;
+    gap: 10px;
+    max-width: min(82vw, 330px);
+    padding: 10px 14px 10px 10px;
+  }
+
+  body:has(.zdu-face-home) .site-header .brand-link img {
+    width: 34px;
+    height: 34px;
+  }
+
+  body:has(.zdu-face-home) .site-header .brand-wordmark strong {
+    font-size: .66rem;
+  }
+
+  body:has(.zdu-face-home) .site-header .brand-wordmark small {
+    max-width: 220px;
+    font-size: .42rem;
+    letter-spacing: .18em;
+  }
+
   .site-header .nav-actions {
     position: static;
   }
@@ -2650,13 +2703,6 @@ body {
     transform: none !important;
     box-sizing: border-box;
     text-align: center;
-  }
-
-  .zdu-face-home .zdu-hero-center-logo {
-    width: 100% !important;
-    max-width: min(306px, calc(100vw - 84px)) !important;
-    margin-inline: auto;
-    box-sizing: border-box;
   }
 
   .zdu-face-home .zdu-face-eyebrow {

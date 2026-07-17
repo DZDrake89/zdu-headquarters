@@ -7,11 +7,30 @@ import CTAButton from './CTAButton';
 
 export default function Navbar({ onScorecard }) {
   const [open, setOpen] = useState(false);
+  const [heroBrandAway, setHeroBrandAway] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isHome) {
+      setHeroBrandAway(false);
+      return undefined;
+    }
+
+    const updateHeroBrand = () => {
+      setHeroBrandAway(window.scrollY > 80);
+    };
+
+    updateHeroBrand();
+    window.addEventListener('scroll', updateHeroBrand, { passive: true });
+
+    return () => window.removeEventListener('scroll', updateHeroBrand);
+  }, [isHome]);
+
   return (
-    <header className="site-header">
+    <header className={`site-header${isHome ? ' site-header-home' : ''}${heroBrandAway ? ' site-header-home-away' : ''}`}>
       <div className="container nav-shell">
         <Link className="brand-link" to="/" aria-label={`${brand.name} home`}>
           <img src={brand.logo} alt="" aria-hidden="true" />
