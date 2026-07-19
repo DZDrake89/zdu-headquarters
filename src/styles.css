@@ -1381,6 +1381,24 @@ body:has(.zdu-face-home) .zdu-face-hero-copy > p:not(.zdu-face-eyebrow) {
   body:has(.zdu-face-home) .site-header .nav-actions {
     margin-right: -22px;
   }
+
+  body:has(.zdu-face-home) .zdu-face-hero-copy {
+    left: clamp(34px, 7vw, 112px);
+    width: min(540px, 43vw);
+    transform: none;
+    text-align: left;
+  }
+
+  body:has(.zdu-face-home) .zdu-face-hero-copy > p:not(.zdu-face-eyebrow),
+  body:has(.zdu-face-home) .zdu-hero-microcopy {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  body:has(.zdu-face-home) .zdu-face-actions {
+    justify-content: flex-start;
+  }
 }
 
 /* Alternate top layout: side logo, wide navigation lane, corner CTA. */
@@ -3093,6 +3111,39 @@ body:has(.zdu-face-home) .site-header .brand-link img {
   height: clamp(108px, 12vw, 148px);
 }
 
+/* The new portrait is a single hero frame, so keep it present instead of cycling. */
+.zdu-face-home .zdu-hero-slide {
+  animation: none !important;
+  opacity: .9 !important;
+  transform: scale(1.045) !important;
+  background-position: center 36% !important;
+}
+
+.zdu-face-home .zdu-hero-photo::after {
+  background:
+    linear-gradient(90deg, rgba(5, 4, 3, .86) 0%, rgba(5, 4, 3, .58) 34%, rgba(5, 4, 3, .16) 65%, rgba(5, 4, 3, .3) 100%),
+    linear-gradient(180deg, rgba(5, 4, 3, .58) 0%, transparent 26%, transparent 58%, rgba(5, 4, 3, .8) 100%);
+}
+
+@media (max-width: 900px) {
+  .zdu-face-home .zdu-hero-slide {
+    background-position: center 30% !important;
+  }
+
+  .zdu-face-home .zdu-face-hero-copy {
+    left: 24px;
+    right: 24px;
+    width: auto;
+    max-width: none;
+    transform: none;
+    text-align: center;
+  }
+
+  .zdu-face-home .zdu-face-actions {
+    justify-content: center;
+  }
+}
+
 body:has(.zdu-face-home) .site-header .brand-wordmark {
   display: none;
 }
@@ -3496,6 +3547,58 @@ body:has(.zdu-face-home) .main-nav:has(a:hover) a:not(:hover) {
 .hero:hover .hero-copy, .hero:focus-within .hero-copy, .hero:hover [data-hero-copy], .hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
 @media (hover: none), (prefers-reduced-motion: reduce) { .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; } }
 @media (max-width: 700px) { .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); } .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); } }
+
+/* Direct portrait hero: keep the face clear and give the introduction its own visual lane. */
+.zdu-face-home .zdu-slider-lines {
+  display: none !important;
+}
+
+.zdu-face-home .zdu-face-hero-copy h1 {
+  max-width: 520px;
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(3.7rem, 6.6vw, 5.8rem);
+  font-weight: 850;
+  letter-spacing: -.07em;
+  line-height: .86;
+  text-shadow: 0 12px 36px rgba(0, 0, 0, .38);
+}
+
+.zdu-face-home .zdu-hero-slide {
+  background-position: center 36% !important;
+}
+
+@media (min-width: 901px) {
+  .zdu-face-home .zdu-face-hero-copy {
+    left: clamp(34px, 7vw, 112px) !important;
+    top: clamp(250px, 34vh, 360px) !important;
+    width: min(540px, 43vw) !important;
+    max-width: 540px !important;
+    transform: none !important;
+    text-align: left !important;
+  }
+
+  .zdu-face-home .zdu-face-hero-copy > p:not(.zdu-face-eyebrow),
+  .zdu-face-home .zdu-hero-microcopy {
+    width: 100% !important;
+    max-width: 510px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .zdu-face-home .zdu-face-actions {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .zdu-face-home .zdu-hero-slide {
+    background-position: center 30% !important;
+  }
+
+  .zdu-face-home .zdu-face-hero-copy h1 {
+    font-size: clamp(3.2rem, 14vw, 5rem);
+  }
+}
 /* ZDU hero final pass: single full-bleed slider, centered mark, hover-reveal type. */
 .hero { position: relative; isolation: isolate; overflow: hidden; }
 .hero .hero-collage, .hero .hero-collage-layer, .hero .hero-photo-collage, .hero .hero-background-collage, .hero .hero-backdrop, .hero [data-hero-collage], .hero [data-hero-backdrop] { display: none !important; }

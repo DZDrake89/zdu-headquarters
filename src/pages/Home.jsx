@@ -9,17 +9,7 @@ const zduHeroPath = '/uploads/zdu-hero/optimized';
 
 const heroSlides = [
   {
-    image: `${zduHeroPath}/zacc-maroon-center.jpeg`,
-    position: 'center 22%',
-    size: 'cover'
-  },
-  {
-    image: `${zduHeroPath}/zacc-cafe-wide.jpeg`,
-    position: 'center 28%',
-    size: 'cover'
-  },
-  {
-    image: `${zduHeroPath}/zacc-archway.jpeg`,
+    image: `${zduHeroPath}/zacc-hero-direct.jpeg`,
     position: 'center 36%',
     size: 'cover'
   }
@@ -164,7 +154,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="zdu-slider-lines" aria-hidden="true"><i /><i /><i /></div>
         </section>
 
         <section className="zdu-face-section zdu-face-feed" aria-labelledby="confidence-feed-title">
