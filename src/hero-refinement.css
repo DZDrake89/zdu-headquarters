@@ -11,8 +11,8 @@
 
 .zdu-face-home .zdu-hero-slide {
   /* A contained, right-weighted portrait gives the subject breathing room. */
-  background-size: auto 124% !important;
-  background-position: right 40% !important;
+  background-size: auto calc(var(--hero-scale, 1.24) * 100%) !important;
+  background-position: var(--hero-position-x, 100%) var(--hero-position-y, 40%) !important;
   background-repeat: no-repeat !important;
   filter: saturate(.9) contrast(1.04) brightness(.72);
   transform: none !important;
@@ -59,11 +59,106 @@
 
 @media (max-width: 900px) {
   .zdu-face-home .zdu-hero-slide {
-    background-size: auto 106% !important;
-    background-position: 82% 30% !important;
+    background-size: auto calc(var(--hero-scale, 1.06) * 100%) !important;
+    background-position: var(--hero-position-x, 82%) var(--hero-position-y, 30%) !important;
   }
 
   .zdu-face-home .zdu-face-hero-copy h1 {
     font-size: clamp(3.2rem, 14vw, 5rem);
   }
+}
+
+/* Small owner-only control that stays out of the way of the public hero message. */
+.zdu-hero-editor {
+  position: absolute;
+  z-index: 8;
+  right: clamp(18px, 3.5vw, 50px);
+  bottom: clamp(22px, 4vw, 56px);
+  color: #fff8ea;
+}
+
+.zdu-hero-editor-trigger,
+.zdu-hero-editor-close,
+.zdu-editor-reset,
+.zdu-editor-save,
+.zdu-hero-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 248, 234, .2);
+  border-radius: 999px;
+  font: 800 .66rem/1 Inter, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.zdu-hero-editor-trigger {
+  padding: 11px 15px;
+  color: rgba(255, 248, 234, .76);
+  background: rgba(5, 4, 3, .36);
+  backdrop-filter: blur(14px);
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.zdu-hero-editor-trigger:hover,
+.zdu-hero-editor-trigger:focus-visible {
+  color: #111;
+  background: #f1cc53;
+  border-color: #f1cc53;
+}
+
+.zdu-hero-editor-panel {
+  width: min(330px, calc(100vw - 36px));
+  padding: 18px;
+  border: 1px solid rgba(212, 175, 55, .4);
+  border-radius: 18px;
+  background: rgba(12, 10, 8, .94);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .5);
+  backdrop-filter: blur(22px);
+}
+
+.zdu-hero-editor-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.zdu-hero-editor-heading div { display: grid; gap: 4px; }
+.zdu-hero-editor-heading span { color: #d4af37; font-size: .58rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.zdu-hero-editor-heading strong { color: #fff8ea; font-size: .96rem; letter-spacing: -.02em; }
+.zdu-hero-editor-close { width: 28px; height: 28px; justify-content: center; padding: 0; color: #fff8ea; background: transparent; }
+.zdu-hero-editor-close:hover { color: #111; background: #f1cc53; }
+
+.zdu-hero-upload {
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  padding: 10px 12px;
+  color: #111;
+  background: #f1cc53;
+  border-color: #f1cc53;
+}
+
+.zdu-hero-upload input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.zdu-hero-editor-preview { height: 120px; margin: 14px 0; border: 1px solid rgba(255, 248, 234, .14); border-radius: 12px; background-color: #090706; background-repeat: no-repeat; }
+.zdu-hero-range { display: grid; gap: 6px; margin-top: 12px; color: rgba(255, 248, 234, .7); font-size: .68rem; }
+.zdu-hero-range span { display: flex; justify-content: space-between; gap: 12px; }
+.zdu-hero-range b { color: #f1cc53; font-weight: 800; }
+.zdu-hero-range input { width: 100%; accent-color: #d4af37; }
+.zdu-hero-editor-message { margin: 12px 0 0; color: rgba(255, 248, 234, .72); font-size: .72rem; line-height: 1.35; }
+.zdu-hero-editor-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
+.zdu-editor-reset, .zdu-editor-save { min-height: 34px; padding: 0 12px; }
+.zdu-editor-reset { color: rgba(255, 248, 234, .74); background: transparent; }
+.zdu-editor-reset:hover { color: #111; background: #fff8ea; }
+.zdu-editor-save { color: #111; background: #f1cc53; border-color: #f1cc53; }
+.zdu-editor-save:hover { background: #ffe27b; }
+.zdu-hero-editor-note { display: block; margin-top: 12px; color: rgba(255, 248, 234, .46); font-size: .62rem; line-height: 1.35; }
+
+@media (max-width: 640px) {
+  .zdu-hero-editor { right: 18px; bottom: 18px; }
+  .zdu-hero-editor-panel { width: min(330px, calc(100vw - 36px)); }
 }

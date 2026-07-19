@@ -1,3 +1,5 @@
+import { links } from './links';
+
 export const siteConfig = {
   navigation: [
     { label: 'About', href: '/about' },
@@ -94,7 +96,7 @@ export const siteConfig = {
         title: 'I need guidance',
         description: 'Book a free Confidence Breakthrough Call when you are ready for personal support, accountability, and a focused next step.',
         cta: 'Book a Free Call',
-        href: 'calendly'
+        href: links.calendly
       }
     ]
   },
@@ -128,7 +130,7 @@ export const siteConfig = {
         title: 'Accelerate with guidance',
         description: 'You are ready for a deeper, more personal path. A Confidence Breakthrough Call can help identify the next level of support.',
         cta: 'Book a Free Call',
-        href: 'calendly'
+        href: links.calendly
       }
     }
   },

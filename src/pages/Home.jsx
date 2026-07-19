@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Camera, Check, Mail, Play, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTAButton from '../components/CTAButton';
+import HeroPhotoEditor from '../components/HeroPhotoEditor';
 import { links } from '../config/links';
 import { products } from '../config/products';
 
@@ -14,6 +16,24 @@ const heroSlides = [
     size: 'cover'
   }
 ];
+
+const heroPreferencesKey = 'zdu-hero-preferences-v1';
+const defaultHeroPreferences = {
+  image: heroSlides[0].image,
+  scale: 1.24,
+  x: 100,
+  y: 40
+};
+
+function getHeroPreferences() {
+  try {
+    const stored = JSON.parse(window.localStorage.getItem(heroPreferencesKey));
+    if (stored?.image) return { ...defaultHeroPreferences, ...stored };
+  } catch {
+    // Use the built-in hero when local storage is unavailable or corrupted.
+  }
+  return defaultHeroPreferences;
+}
 
 const feedItems = [
   {
@@ -112,7 +132,17 @@ const currentOfferLinks = [
 ];
 
 export default function Home() {
+  const [heroPreferences, setHeroPreferences] = useState(defaultHeroPreferences);
+  useEffect(() => setHeroPreferences(getHeroPreferences()), []);
+
   const openScorecard = () => window.dispatchEvent(new Event('open-scorecard'));
+  const saveHeroPreferences = () => {
+    try { window.localStorage.setItem(heroPreferencesKey, JSON.stringify(heroPreferences)); } catch { /* private browsing may block storage */ }
+  };
+  const resetHeroPreferences = () => {
+    setHeroPreferences(defaultHeroPreferences);
+    try { window.localStorage.removeItem(heroPreferencesKey); } catch { /* ignore storage failures */ }
+  };
 
   return (
     <>
@@ -128,14 +158,25 @@ export default function Home() {
                 className="zdu-hero-slide"
                 key={slide.image}
                 style={{
-                  backgroundImage: `url("${slide.image}")`,
-                  '--hero-position': slide.position,
-                  backgroundSize: slide.size
+                  backgroundImage: `url("${heroPreferences.image}")`,
+                  '--hero-position': `${heroPreferences.x}% ${heroPreferences.y}%`,
+                  '--hero-scale': heroPreferences.scale,
+                  '--hero-position-x': `${heroPreferences.x}%`,
+                  '--hero-position-y': `${heroPreferences.y}%`,
+                  backgroundSize: `auto ${heroPreferences.scale * 100}%`,
+                  backgroundPosition: `${heroPreferences.x}% ${heroPreferences.y}%`
                 }}
               />
             ))}
           </div>
           <div className="zdu-hero-grid" aria-hidden="true" />
+
+          <HeroPhotoEditor
+            value={heroPreferences}
+            onChange={setHeroPreferences}
+            onSave={saveHeroPreferences}
+            onReset={resetHeroPreferences}
+          />
 
           <div className="zdu-face-hero-copy">
             <p className="zdu-face-eyebrow">Calm Confidence • Mentor • Results Builder</p>
