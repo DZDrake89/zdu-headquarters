@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './styles.css';
+import './hero-refinement.css';
 
 function MarketingAnalytics() {
   const measurementId = import.meta.env.VITE_GA4_MEASUREMENT_ID;
