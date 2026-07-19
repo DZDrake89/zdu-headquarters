@@ -147,14 +147,6 @@ export default function Home() {
           </div>
           <div className="zdu-hero-grid" aria-hidden="true" />
 
-          <div className="zdu-watch-intro">
-            <a href="https://www.youtube.com/shorts/WJ5ml3rF2sg" target="_blank" rel="noreferrer" aria-label="Watch coaching intro video">
-              <Play size={18} fill="currentColor" />
-              <span>Watch<br />Intro</span>
-            </a>
-            <small>Video / Image Slider Ready</small>
-          </div>
-
           <div className="zdu-face-hero-copy">
             <p className="zdu-face-eyebrow">Calm Confidence • Mentor • Results Builder</p>
             <h1 id="home-hero-title">Zacc<br />Drake</h1>

@@ -1351,6 +1351,38 @@ body:has(.zdu-face-home) .site-header.site-header-home-away .brand-link {
   }
 }
 
+/* Final hero polish: transparent corner mark, no watch control, lighter type system. */
+.zdu-face-home .zdu-watch-intro {
+  display: none !important;
+}
+
+body:has(.zdu-face-home) .site-header .brand-link img {
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .5));
+}
+
+body:has(.zdu-face-home) .zdu-face-hero-copy h1 {
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -.045em;
+}
+
+body:has(.zdu-face-home) .zdu-face-hero-copy > p:not(.zdu-face-eyebrow) {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+@media (min-width: 901px) {
+  body:has(.zdu-face-home) .site-header .brand-link {
+    margin-left: -14px;
+  }
+
+  body:has(.zdu-face-home) .site-header .nav-actions {
+    margin-right: -22px;
+  }
+}
+
 /* Alternate top layout: side logo, wide navigation lane, corner CTA. */
 @media (min-width: 901px) {
   body:has(.zdu-face-home) .site-header {

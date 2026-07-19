@@ -3,7 +3,7 @@ export const brand = {
   shortName: 'ZDU',
   founder: 'Zacc Drake',
   tagline: 'Build Self-Trust. Take Courageous Action. Become Unstoppable.',
-  logo: '/assets/zdu-logo.png',
+  logo: '/assets/zdu-logo-transparent.png',
   colors: {
     black: '#111111',
     gold: '#D4AF37',
