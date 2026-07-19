@@ -10,18 +10,18 @@ const zduHeroPath = '/uploads/zdu-hero/optimized';
 const heroSlides = [
   {
     image: `${zduHeroPath}/zacc-maroon-center.jpeg`,
-    position: 'center 36%',
-    size: 'auto 118%'
+    position: 'center 22%',
+    size: 'cover'
   },
   {
     image: `${zduHeroPath}/zacc-cafe-wide.jpeg`,
-    position: '34% 42%',
-    size: 'auto 112%'
+    position: 'center 28%',
+    size: 'cover'
   },
   {
     image: `${zduHeroPath}/zacc-archway.jpeg`,
-    position: 'center 46%',
-    size: 'auto 110%'
+    position: 'center 36%',
+    size: 'cover'
   }
 ];
 
@@ -139,7 +139,7 @@ export default function Home() {
                 key={slide.image}
                 style={{
                   backgroundImage: `url("${slide.image}")`,
-                  backgroundPosition: slide.position,
+                  '--hero-position': slide.position,
                   backgroundSize: slide.size
                 }}
               />

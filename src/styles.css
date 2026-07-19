@@ -3051,6 +3051,29 @@ body:has(.zdu-face-home) .main-nav:has(a:hover) a:not(:hover) {
   }
 }
 
+/* Portrait focal points: keep the face in frame while the headline sits over the image. */
+.zdu-face-home .zdu-hero-slide {
+  background-position: var(--hero-position, center 28%) !important;
+  background-size: cover !important;
+}
+
+@keyframes zduHeroSlideShow {
+  0%, 2% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+
+  4%, 31% {
+    opacity: .88;
+    transform: scale(1.01);
+  }
+
+  36%, 100% {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+
 /* Hide only the decorative collage/backdrop layers; the live slider remains. */
 .hero .hero-collage,
 .hero .hero-collage-layer,
