@@ -162,3 +162,220 @@
   .zdu-hero-editor { right: 18px; bottom: 18px; }
   .zdu-hero-editor-panel { width: min(330px, calc(100vw - 36px)); }
 }
+
+/*
+ * Inner-page guardrail
+ *
+ * The homepage hero uses a full-bleed image treatment.  Older global hero
+ * rules were broad enough to apply that treatment to every HeroSection,
+ * which made the coaching and scorecard media absolute, stretched, and
+ * obscured the copy.  Keep the homepage choreography scoped to its own
+ * `.zdu-face-home` tree and restore the normal editorial two-column layout
+ * everywhere else.
+ */
+.site-main-inner .hero {
+  overflow: hidden;
+}
+
+.site-main-inner .hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(280px, .86fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6.5rem);
+}
+
+.site-main-inner .hero-content {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 880px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.site-main-inner .hero-media {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1 !important;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+.site-main-inner .hero-media > * {
+  position: relative;
+  z-index: 1;
+}
+
+.site-main-inner .hero-media img,
+.site-main-inner .hero-media .coaching-hero-image,
+.site-main-inner .hero-media .resource-hero-card img {
+  position: relative !important;
+  inset: auto !important;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 620px;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+}
+
+.site-main-inner .hero-media .coaching-hero-image {
+  max-width: 620px;
+  margin-inline: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover !important;
+  object-position: center 22% !important;
+}
+
+.site-main-inner .hero-media .resource-hero-card {
+  position: relative !important;
+  inset: auto !important;
+  width: min(100%, 460px) !important;
+  min-height: 0 !important;
+  margin-inline: auto !important;
+  transform: rotate(2deg) !important;
+}
+
+.site-main-inner .hero h1 {
+  max-width: 900px;
+  font-size: clamp(3rem, 5vw, 5.75rem) !important;
+  line-height: .9 !important;
+  letter-spacing: -.065em !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.site-main-inner .hero-description {
+  max-width: 690px !important;
+}
+
+/* Restore the intentional product collage after the legacy collage-hiding pass. */
+.site-main-inner .product-collage {
+  display: block !important;
+  position: relative !important;
+  min-height: 460px !important;
+}
+
+.site-main-inner .product-collage img {
+  position: absolute !important;
+  width: 68% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: initial !important;
+}
+
+.site-main-inner .product-collage img:first-child {
+  left: 0;
+  top: 0;
+  transform: rotate(-4deg) !important;
+}
+
+.site-main-inner .product-collage img:last-child {
+  right: 0;
+  bottom: 0;
+  transform: rotate(5deg) !important;
+}
+
+/* Preserve the designed mockup proportions for the other product heroes. */
+.site-main-inner .founder-hero-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center 38% !important;
+}
+
+.site-main-inner .book-mockup img {
+  width: min(73%, 390px) !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: initial !important;
+  transform: rotate(3deg) !important;
+}
+
+.site-main-inner .workbook-mockup img {
+  width: 92% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: initial !important;
+  transform: rotate(2deg) !important;
+}
+
+/* Never let a compact desktop header split a navigation label across lines. */
+.site-header .main-nav a {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Keep desktop navigation legible before the mobile menu takes over. */
+@media (min-width: 821px) and (max-width: 1180px) {
+  .site-header:not(.site-header-home) .nav-shell {
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    gap: 16px;
+  }
+
+  .site-header:not(.site-header-home) .brand-wordmark strong {
+    font-size: .74rem;
+  }
+
+  .site-header:not(.site-header-home) .brand-wordmark small {
+    font-size: .42rem;
+    letter-spacing: .2em;
+  }
+
+  .site-header:not(.site-header-home) .main-nav {
+    gap: clamp(8px, 1.1vw, 16px);
+    min-width: 0;
+  }
+
+  .site-header:not(.site-header-home) .main-nav a {
+    white-space: nowrap;
+    font-size: .57rem;
+    letter-spacing: .1em;
+  }
+
+  .site-header:not(.site-header-home) .nav-cta {
+    padding-inline: 13px !important;
+    font-size: .65rem !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-main-inner .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .site-main-inner .hero-media {
+    width: min(100%, 620px) !important;
+    margin-inline: auto !important;
+  }
+
+  .site-main-inner .hero h1 {
+    font-size: clamp(2.65rem, 11vw, 5rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-main-inner .hero-layout {
+    gap: 2rem;
+  }
+
+  .site-main-inner .hero h1 {
+    font-size: clamp(2.35rem, 12vw, 3.6rem) !important;
+  }
+
+  .site-main-inner .hero-media .coaching-hero-image {
+    aspect-ratio: 4 / 5;
+  }
+}
