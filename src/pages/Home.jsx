@@ -133,7 +133,15 @@ const currentOfferLinks = [
 
 export default function Home() {
   const [heroPreferences, setHeroPreferences] = useState(defaultHeroPreferences);
+  const [heroEditorEnabled, setHeroEditorEnabled] = useState(false);
   useEffect(() => setHeroPreferences(getHeroPreferences()), []);
+  useEffect(() => {
+    // Keep owner controls out of the public UI. Add `?zdu-editor=1` (or
+    // `#zdu-editor`) to the homepage URL when you want to edit this browser's
+    // hero crop; the control is never rendered for normal visitors.
+    const params = new URLSearchParams(window.location.search);
+    setHeroEditorEnabled(params.get('zdu-editor') === '1' || window.location.hash === '#zdu-editor');
+  }, []);
 
   const openScorecard = () => window.dispatchEvent(new Event('open-scorecard'));
   const saveHeroPreferences = () => {
@@ -171,12 +179,14 @@ export default function Home() {
           </div>
           <div className="zdu-hero-grid" aria-hidden="true" />
 
-          <HeroPhotoEditor
-            value={heroPreferences}
-            onChange={setHeroPreferences}
-            onSave={saveHeroPreferences}
-            onReset={resetHeroPreferences}
-          />
+          {heroEditorEnabled && (
+            <HeroPhotoEditor
+              value={heroPreferences}
+              onChange={setHeroPreferences}
+              onSave={saveHeroPreferences}
+              onReset={resetHeroPreferences}
+            />
+          )}
 
           <div className="zdu-face-hero-copy">
             <p className="zdu-face-eyebrow">Calm Confidence • Mentor • Results Builder</p>
