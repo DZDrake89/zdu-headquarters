@@ -2978,13 +2978,12 @@ body:has(.zdu-face-home) .site-header .brand-link {
 }
 
 body:has(.zdu-face-home) .site-header .brand-link img {
-  width: clamp(58px, 7vw, 78px);
-  height: clamp(58px, 7vw, 78px);
+  width: clamp(108px, 12vw, 148px);
+  height: clamp(108px, 12vw, 148px);
 }
 
 body:has(.zdu-face-home) .site-header .brand-wordmark {
-  justify-items: center;
-  text-align: center;
+  display: none;
 }
 
 body:has(.zdu-face-home) .site-header .brand-wordmark strong {
@@ -2998,8 +2997,13 @@ body:has(.zdu-face-home) .site-header .brand-wordmark small {
 }
 
 body:has(.zdu-face-home) .zdu-face-hero-copy {
-  top: clamp(205px, 28vh, 310px);
+  top: clamp(262px, 32vh, 350px);
   bottom: auto;
+}
+
+body:has(.zdu-face-home) .zdu-face-hero-copy h1 {
+  margin-top: 24px;
+  font-size: clamp(4.2rem, 8.2vw, 6.5rem);
 }
 
 /* Keep the page map present but subdued until someone reaches for a link. */
@@ -3023,7 +3027,7 @@ body:has(.zdu-face-home) .main-nav:has(a:hover) a:not(:hover) {
 
 @media (max-width: 900px) {
   .zdu-face-home .zdu-face-hero-copy {
-    top: 230px;
+    top: 252px;
     bottom: auto;
   }
 }
@@ -3038,7 +3042,7 @@ body:has(.zdu-face-home) .main-nav:has(a:hover) a:not(:hover) {
   }
 
   .zdu-face-home .zdu-face-hero-copy {
-    top: 214px !important;
+    top: 238px !important;
     bottom: auto !important;
   }
 
