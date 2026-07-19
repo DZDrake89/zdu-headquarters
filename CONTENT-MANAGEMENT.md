@@ -40,3 +40,7 @@ After uploading the cover image, use **Photo crop shape** to choose landscape, w
 ## What happens after saving
 
 Pages CMS commits the content to GitHub. Vercel detects the change and normally republishes the site within a minute or two.
+
+## Owner media backoffice
+
+The website also includes a private `/backoffice` route for first-impression media. Set `VITE_ZDU_BACKOFFICE_PASSWORD` in Vercel, then sign in at `https://zdu-headquarters.vercel.app/backoffice` to update the hero photo crop, homepage video cards, and optional hero intro video. The media editor saves to the current browser and includes an exportable JSON backup. Keep using Pages CMS for content that must publish for every visitor (articles, video posts, and uploaded post media).

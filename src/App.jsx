@@ -15,9 +15,11 @@ import ResourcePost from './pages/ResourcePost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Legal from './pages/Legal';
+import Backoffice from './pages/Backoffice';
 
 export default function App() {
   return <Routes>
+    <Route path="/backoffice" element={<Backoffice />} />
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />

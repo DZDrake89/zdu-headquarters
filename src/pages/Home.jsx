@@ -6,34 +6,11 @@ import CTAButton from '../components/CTAButton';
 import HeroPhotoEditor from '../components/HeroPhotoEditor';
 import { links } from '../config/links';
 import { products } from '../config/products';
+import { defaultSiteContent, loadSiteContent, saveSiteContent } from '../config/contentStore';
 
 const zduHeroPath = '/uploads/zdu-hero/optimized';
 
-const heroSlides = [
-  {
-    image: `${zduHeroPath}/zacc-hero-direct.jpeg`,
-    position: 'center 36%',
-    size: 'cover'
-  }
-];
-
-const heroPreferencesKey = 'zdu-hero-preferences-v1';
-const defaultHeroPreferences = {
-  image: heroSlides[0].image,
-  scale: 1.24,
-  x: 100,
-  y: 40
-};
-
-function getHeroPreferences() {
-  try {
-    const stored = JSON.parse(window.localStorage.getItem(heroPreferencesKey));
-    if (stored?.image) return { ...defaultHeroPreferences, ...stored };
-  } catch {
-    // Use the built-in hero when local storage is unavailable or corrupted.
-  }
-  return defaultHeroPreferences;
-}
+const defaultHeroPreferences = defaultSiteContent.hero;
 
 const feedItems = [
   {
@@ -93,13 +70,6 @@ const productSystems = [
   }
 ];
 
-const videoCards = [
-  { title: 'Stop Waiting To Feel Ready', href: '/resources/interrupt-the-overthinking-loop' },
-  { title: 'Why Confidence Needs Evidence', href: '/resources/confidence-is-built-not-found' },
-  { title: 'The Truth About Self-Trust', href: '/workbook' },
-  { title: 'How To Move With Calm Authority', href: '/coaching' }
-];
-
 const proofItems = [
   'Client Testimonials',
   'Message Screenshots',
@@ -132,9 +102,16 @@ const currentOfferLinks = [
 ];
 
 export default function Home() {
-  const [heroPreferences, setHeroPreferences] = useState(defaultHeroPreferences);
+  const [siteContent, setSiteContent] = useState(loadSiteContent);
+  const heroPreferences = siteContent.hero;
   const [heroEditorEnabled, setHeroEditorEnabled] = useState(false);
-  useEffect(() => setHeroPreferences(getHeroPreferences()), []);
+  useEffect(() => {
+    const update = (event) => setSiteContent(event.detail || loadSiteContent());
+    const onStorage = (event) => { if (event.key === 'zdu-site-content-v2') setSiteContent(loadSiteContent()); };
+    window.addEventListener('zdu-content-updated', update);
+    window.addEventListener('storage', onStorage);
+    return () => { window.removeEventListener('zdu-content-updated', update); window.removeEventListener('storage', onStorage); };
+  }, []);
   useEffect(() => {
     // Keep owner controls out of the public UI. Add `?zdu-editor=1` (or
     // `#zdu-editor`) to the homepage URL when you want to edit this browser's
@@ -144,12 +121,10 @@ export default function Home() {
   }, []);
 
   const openScorecard = () => window.dispatchEvent(new Event('open-scorecard'));
-  const saveHeroPreferences = () => {
-    try { window.localStorage.setItem(heroPreferencesKey, JSON.stringify(heroPreferences)); } catch { /* private browsing may block storage */ }
-  };
+  const saveHeroPreferences = () => saveSiteContent(siteContent);
   const resetHeroPreferences = () => {
-    setHeroPreferences(defaultHeroPreferences);
-    try { window.localStorage.removeItem(heroPreferencesKey); } catch { /* ignore storage failures */ }
+    setSiteContent((current) => ({ ...current, hero: defaultHeroPreferences }));
+    try { window.localStorage.removeItem('zdu-hero-preferences-v1'); } catch { /* ignore storage failures */ }
   };
 
   return (
@@ -161,12 +136,12 @@ export default function Home() {
       <div className="zdu-face-home">
         <section className="zdu-face-hero" aria-labelledby="home-hero-title">
           <div className="zdu-hero-photo" aria-hidden="true">
-            {heroSlides.map((slide) => (
+            {[{ image: heroPreferences.image }].map((slide) => (
               <span
                 className="zdu-hero-slide"
                 key={slide.image}
                 style={{
-                  backgroundImage: `url("${heroPreferences.image}")`,
+                  backgroundImage: `url("${slide.image}")`,
                   '--hero-position': `${heroPreferences.x}% ${heroPreferences.y}%`,
                   '--hero-scale': heroPreferences.scale,
                   '--hero-position-x': `${heroPreferences.x}%`,
@@ -182,7 +157,7 @@ export default function Home() {
           {heroEditorEnabled && (
             <HeroPhotoEditor
               value={heroPreferences}
-              onChange={setHeroPreferences}
+              onChange={(nextHero) => setSiteContent((current) => ({ ...current, hero: nextHero }))}
               onSave={saveHeroPreferences}
               onReset={resetHeroPreferences}
             />
@@ -261,8 +236,8 @@ export default function Home() {
             <h2 id="video-series-title">Video Series</h2>
           </div>
           <div className="zdu-video-grid">
-            {videoCards.map((video) => (
-              <Link to={video.href} key={video.title}>
+          {siteContent.videos.map((video) => (
+              <Link to={video.url || '#'} key={`${video.title}-${video.url}`} target={video.url?.startsWith('http') ? '_blank' : undefined} rel={video.url?.startsWith('http') ? 'noreferrer' : undefined}>
                 <span><Play size={17} fill="currentColor" /></span>
                 <h3>{video.title}</h3>
               </Link>

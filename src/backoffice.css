@@ -1,0 +1,83 @@
+:root { --bo-ink:#111111; --bo-muted:#6d6a64; --bo-line:#e8e5df; --bo-paper:#f7f6f2; --bo-gold:#d4af37; --bo-gold-dark:#a98518; }
+.zdu-backoffice-shell, .zdu-backoffice-login { min-height:100vh; color:var(--bo-ink); background:var(--bo-paper); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.zdu-backoffice-login { display:grid; place-items:center; padding:32px 20px; background:radial-gradient(circle at 10% 0%,rgba(212,175,55,.16),transparent 34%),linear-gradient(135deg,#f8f7f4 0%,#ece9e1 100%); }
+.zdu-login-card { width:min(100%,560px); padding:clamp(28px,5vw,60px); background:#fff; border:1px solid var(--bo-line); border-radius:26px; box-shadow:0 32px 100px rgba(20,18,14,.12); }
+.zdu-backoffice-brand { display:inline-flex; align-items:center; gap:11px; color:var(--bo-ink); font-weight:850; letter-spacing:.01em; text-decoration:none; }
+.zdu-backoffice-brand img { width:46px; height:46px; object-fit:contain; }
+.zdu-login-card > .zdu-backoffice-brand { margin-bottom:58px; }
+.zdu-login-icon { display:grid; place-items:center; width:48px; height:48px; margin-bottom:25px; color:#fff; background:var(--bo-ink); border-radius:14px; }
+.zdu-backoffice-kicker { margin:0 0 9px; color:var(--bo-gold-dark); font-size:.68rem; font-weight:900; letter-spacing:.15em; text-transform:uppercase; }
+.zdu-login-card h1, .zdu-backoffice-sidebar h1 { margin:0; font-size:clamp(2.6rem,5vw,4.8rem); line-height:.92; letter-spacing:-.055em; }
+.zdu-login-card h1 em, .zdu-backoffice-sidebar h1 em { color:var(--bo-gold-dark); font-style:normal; }
+.zdu-login-copy { max-width:390px; margin:22px 0 32px; color:var(--bo-muted); font-size:1.02rem; line-height:1.65; }
+.zdu-login-form label, .zdu-backoffice-panel label { display:grid; gap:8px; color:var(--bo-muted); font-size:.73rem; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
+.zdu-login-form input, .zdu-backoffice-panel input { width:100%; box-sizing:border-box; padding:15px 16px; border:1px solid #dbd7cf; border-radius:12px; color:var(--bo-ink); background:#fff; font:inherit; letter-spacing:0; text-transform:none; outline:none; transition:border-color .18s,box-shadow .18s; }
+.zdu-login-form input:focus, .zdu-backoffice-panel input:focus { border-color:var(--bo-gold-dark); box-shadow:0 0 0 4px rgba(212,175,55,.15); }
+.zdu-login-form { display:grid; gap:10px; }
+.zdu-backoffice-primary, .zdu-backoffice-secondary { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:46px; padding:0 18px; border:1px solid transparent; border-radius:999px; cursor:pointer; font:800 .74rem/1 Inter,sans-serif; letter-spacing:.08em; text-transform:uppercase; transition:transform .18s,box-shadow .18s,background .18s; }
+.zdu-backoffice-primary { color:#fff; background:var(--bo-ink); box-shadow:0 13px 28px rgba(17,17,17,.18); }
+.zdu-backoffice-primary:hover, .zdu-backoffice-secondary:hover { transform:translateY(-2px); }
+.zdu-backoffice-primary.compact { min-height:40px; padding:0 15px; }
+.zdu-backoffice-secondary { color:var(--bo-ink); border-color:#d8d3c9; background:#fff; }
+.zdu-arrow-turn { transform:rotate(180deg); }
+.zdu-login-note { display:flex; align-items:flex-start; gap:7px; margin:20px 0 0; color:#8a877f; font-size:.72rem; line-height:1.5; }
+.zdu-login-note svg { flex:none; color:var(--bo-gold-dark); }
+.zdu-backoffice-home-link { display:inline-flex; align-items:center; gap:7px; margin-top:28px; color:var(--bo-muted); font-size:.78rem; font-weight:750; text-decoration:none; }
+.zdu-backoffice-error { margin:4px 0 0; color:#b4232f; font-size:.78rem; font-weight:700; }
+.zdu-backoffice-topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:78px; padding:0 clamp(20px,4vw,54px); border-bottom:1px solid var(--bo-line); background:rgba(255,255,255,.84); backdrop-filter:blur(18px); position:sticky; top:0; z-index:10; }
+.zdu-backoffice-topbar .zdu-backoffice-brand img { width:36px; height:36px; }
+.zdu-backoffice-top-actions { display:flex; align-items:center; gap:17px; }
+.zdu-backoffice-top-actions a, .zdu-backoffice-top-actions button { display:inline-flex; align-items:center; gap:7px; border:0; color:var(--bo-muted); background:none; cursor:pointer; font:700 .73rem/1 Inter,sans-serif; text-decoration:none; }
+.zdu-backoffice-top-actions a:hover, .zdu-backoffice-top-actions button:hover { color:var(--bo-ink); }
+.zdu-backoffice-layout { display:grid; grid-template-columns:minmax(245px,310px) 1fr; min-height:calc(100vh - 79px); }
+.zdu-backoffice-sidebar { padding:clamp(28px,5vw,70px) clamp(22px,4vw,52px); border-right:1px solid var(--bo-line); background:#f1efe9; }
+.zdu-backoffice-sidebar h1 { max-width:260px; font-size:clamp(2.4rem,4vw,4rem); }
+.zdu-backoffice-sidebar > p:not(.zdu-backoffice-kicker) { margin:19px 0 46px; color:var(--bo-muted); font-size:.92rem; line-height:1.55; }
+.zdu-backoffice-sidebar nav { display:grid; gap:7px; }
+.zdu-backoffice-sidebar nav button { display:flex; align-items:center; gap:10px; padding:13px 14px; border:1px solid transparent; border-radius:11px; color:var(--bo-muted); background:transparent; cursor:pointer; font:800 .78rem/1 Inter,sans-serif; text-align:left; }
+.zdu-backoffice-sidebar nav button.active { color:var(--bo-ink); border-color:#ded8ca; background:#fff; box-shadow:0 10px 20px rgba(16,16,16,.05); }
+.zdu-backoffice-sidebar nav button.active svg { color:var(--bo-gold-dark); }
+.zdu-backoffice-sidebar-note { display:flex; gap:10px; margin-top:56px; padding:15px; color:#77736a; border:1px solid #ddd8cd; border-radius:13px; font-size:.72rem; line-height:1.45; }
+.zdu-backoffice-sidebar-note svg { flex:none; color:var(--bo-gold-dark); }
+.zdu-backoffice-main { min-width:0; padding:clamp(25px,5vw,72px) clamp(20px,6vw,94px); }
+.zdu-backoffice-main-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:30px; }
+.zdu-backoffice-main-head h2 { margin:0; font-size:clamp(2rem,3.5vw,3.2rem); letter-spacing:-.045em; }
+.zdu-backoffice-main-actions { display:flex; flex-wrap:wrap; gap:9px; }
+.zdu-backoffice-panel { max-width:1120px; padding:clamp(22px,4vw,45px); border:1px solid var(--bo-line); border-radius:22px; background:#fff; box-shadow:0 20px 50px rgba(20,18,14,.055); }
+.zdu-backoffice-editor-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,42%); gap:clamp(25px,5vw,62px); align-items:start; }
+.zdu-backoffice-section-heading { display:flex; align-items:flex-start; gap:12px; margin-bottom:15px; }
+.zdu-backoffice-section-heading > svg { flex:none; margin-top:2px; color:var(--bo-gold-dark); }
+.zdu-backoffice-section-heading h2 { margin:0; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:-.045em; }
+.zdu-backoffice-muted { max-width:640px; margin:0 0 22px; color:var(--bo-muted); font-size:.92rem; line-height:1.62; }
+.zdu-backoffice-upload { position:relative; display:inline-flex !important; align-items:center; gap:8px; min-height:44px; padding:0 16px; border:1px dashed #c9b77a; border-radius:999px; color:var(--bo-ink) !important; background:#fcfaf4; cursor:pointer; }
+.zdu-backoffice-upload input { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.zdu-backoffice-ranges { display:grid; gap:18px; margin-top:28px; }
+.zdu-backoffice-ranges label { gap:9px; }
+.zdu-backoffice-ranges label span { display:flex; justify-content:space-between; color:var(--bo-muted); font-size:.76rem; letter-spacing:0; text-transform:none; }
+.zdu-backoffice-ranges label b { color:var(--bo-ink); }
+.zdu-backoffice-ranges input[type="range"] { width:100%; accent-color:var(--bo-gold-dark); }
+.zdu-backoffice-preview { position:relative; min-height:420px; border-radius:18px; background-color:#111; background-repeat:no-repeat; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,.17); }
+.zdu-backoffice-preview-shade { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.5)); }
+.zdu-backoffice-preview > span { position:absolute; left:18px; bottom:16px; padding:7px 10px; color:#fff; background:rgba(0,0,0,.58); border:1px solid rgba(255,255,255,.22); border-radius:999px; font-size:.64rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.zdu-backoffice-status { margin:17px 0 0; color:#3f7f52; font-size:.76rem; font-weight:750; }
+.zdu-backoffice-card-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:9px; margin-top:24px; }
+.zdu-video-admin-list { display:grid; gap:10px; margin:28px 0 18px; }
+.zdu-video-admin-row { display:grid; grid-template-columns:38px minmax(0,1fr) 34px; align-items:start; gap:14px; padding:15px; border:1px solid var(--bo-line); border-radius:15px; background:#fbfaf7; }
+.zdu-video-admin-number { display:grid; place-items:center; width:32px; height:32px; color:#fff; background:var(--bo-ink); border-radius:9px; font-size:.68rem; font-weight:900; }
+.zdu-video-admin-fields { display:grid; grid-template-columns:minmax(140px,.7fr) minmax(200px,1.3fr); gap:11px; }
+.zdu-video-admin-fields label { font-size:.63rem; }
+.zdu-video-admin-fields input { padding:11px 12px; font-size:.82rem; }
+.zdu-video-type { align-self:end; grid-column:2; color:#827d74; font-size:.62rem; font-weight:900; letter-spacing:.1em; }
+.zdu-video-type.is-embed { color:#3f7f52; }
+.zdu-icon-button { display:grid; place-items:center; width:32px; height:32px; border:1px solid #ded8cf; border-radius:9px; color:#8b867e; background:#fff; cursor:pointer; }
+.zdu-icon-button:hover { color:#a5232f; border-color:#e1b2b7; }
+.zdu-backoffice-hero-video label { max-width:720px; margin-top:23px; }
+.zdu-backoffice-checkbox { display:flex !important; grid-template-columns:none !important; align-items:center; gap:10px !important; margin-top:17px; color:var(--bo-ink) !important; letter-spacing:0 !important; text-transform:none !important; }
+.zdu-backoffice-checkbox input { width:17px; height:17px; accent-color:var(--bo-gold-dark); }
+.zdu-backoffice-footer-actions { display:flex; justify-content:space-between; gap:15px; max-width:1120px; margin-top:22px; }
+.zdu-backoffice-footer-actions button, .zdu-backoffice-footer-actions a { display:inline-flex; align-items:center; gap:7px; padding:0; border:0; color:#88837b; background:none; cursor:pointer; font:700 .72rem/1 Inter,sans-serif; text-decoration:none; }
+.zdu-backoffice-footer-actions button:hover, .zdu-backoffice-footer-actions a:hover { color:var(--bo-ink); }
+.zdu-backoffice-toast { position:fixed; right:22px; bottom:22px; z-index:30; display:flex; align-items:center; gap:9px; max-width:calc(100vw - 44px); padding:13px 16px; color:#fff; background:var(--bo-ink); border-radius:12px; box-shadow:0 20px 45px rgba(0,0,0,.22); font-size:.78rem; font-weight:750; }
+.zdu-backoffice-toast svg { color:var(--bo-gold); }
+@media (max-width: 850px) { .zdu-backoffice-layout { grid-template-columns:1fr; } .zdu-backoffice-sidebar { border-right:0; border-bottom:1px solid var(--bo-line); } .zdu-backoffice-sidebar > p:not(.zdu-backoffice-kicker) { margin-bottom:24px; } .zdu-backoffice-sidebar nav { grid-template-columns:repeat(3,1fr); } .zdu-backoffice-sidebar-note { margin-top:28px; } .zdu-backoffice-editor-grid { grid-template-columns:1fr; } .zdu-backoffice-preview { min-height:330px; } }
+@media (max-width: 620px) { .zdu-backoffice-topbar { align-items:flex-start; padding-top:15px; padding-bottom:15px; } .zdu-backoffice-top-actions { gap:10px; } .zdu-backoffice-top-actions a { font-size:0; } .zdu-backoffice-top-actions a svg { width:19px; height:19px; } .zdu-backoffice-main-head { align-items:flex-start; flex-direction:column; } .zdu-backoffice-main-actions { width:100%; } .zdu-backoffice-main-actions button { flex:1; } .zdu-video-admin-fields { grid-template-columns:1fr; } .zdu-video-type { grid-column:1; } .zdu-backoffice-sidebar nav { grid-template-columns:1fr; } .zdu-backoffice-footer-actions { flex-direction:column; } }
