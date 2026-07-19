@@ -2743,3 +2743,801 @@ body:has(.zdu-face-home) .site-header.site-header-home-away .brand-link {
     box-sizing: border-box;
   }
 }
+/* ZDU hero refinement: single full-bleed slider, centered mark, hover-reveal copy */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Remove decorative collage layers while preserving the live hero media/slider. */
+.hero [class*="collage"],
+.hero [class*="background-collage"],
+.hero [class*="backdrop"],
+.hero [data-hero-collage] {
+  display: none !important;
+}
+
+.hero [class*="slider"],
+.hero [class*="slide"],
+.hero [class*="hero-media"],
+.hero [class*="hero-image"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero [class*="slider"] img,
+.hero [class*="slide"] img,
+.hero [class*="hero-media"] img,
+.hero [class*="hero-image"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.01);
+}
+
+.hero [class*="logo"] {
+  position: absolute;
+  top: clamp(1.25rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero [class*="copy"],
+.hero [class*="content"],
+.hero [class*="typography"] {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.hero:hover [class*="copy"],
+.hero:hover [class*="content"],
+.hero:hover [class*="typography"],
+.hero:focus-within [class*="copy"],
+.hero:focus-within [class*="content"],
+.hero:focus-within [class*="typography"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero [class*="copy"],
+  .hero [class*="content"],
+  .hero [class*="typography"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* Final ZDU hero pass: one full-bleed media slider, centered mark, hover-reveal copy. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero .hero-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] {
+  display: none !important;
+}
+
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+.hero .hero-logo,
+.hero [data-hero-logo] {
+  position: absolute;
+  top: clamp(1.25rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero .hero-copy,
+.hero .hero-content,
+.hero [data-hero-copy] {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover .hero-content,
+.hero:focus-within .hero-content,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy,
+  .hero .hero-content,
+  .hero [data-hero-copy] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero .hero-logo,
+  .hero [data-hero-logo] {
+    top: 1rem;
+    width: min(76vw, 20rem);
+  }
+
+  .hero .hero-slide img,
+  .hero .hero-media img,
+  .hero [data-hero-slide] img,
+  .hero [data-hero-media] img {
+    object-position: 50% 42%;
+    transform: scale(1.005);
+  }
+}
+/* ZDU hero: a single full-bleed slider with a centered mark and hover-reveal copy. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Hero-only pass: remove the deep collage and let the photography carry the viewport. */
+.zdu-face-home .zdu-face-hero {
+  min-height: max(760px, 100svh);
+  background: #050403;
+}
+
+.zdu-face-home .zdu-hero-photo {
+  background: #050403;
+}
+
+.zdu-face-home .zdu-hero-photo-wall,
+.zdu-face-home .zdu-hero-tile {
+  display: none !important;
+}
+
+.zdu-face-home .zdu-hero-slide {
+  background-size: cover !important;
+  background-position: center 35% !important;
+  filter: saturate(.86) contrast(1.05) brightness(.62);
+  mix-blend-mode: normal;
+  transform: scale(1.015);
+}
+
+.zdu-face-home .zdu-hero-photo::before {
+  z-index: 3;
+  background: linear-gradient(180deg, rgba(5, 4, 3, .3) 0%, rgba(5, 4, 3, .02) 33%, rgba(5, 4, 3, .12) 56%, rgba(5, 4, 3, .88) 100%);
+  mix-blend-mode: normal;
+}
+
+.zdu-face-home .zdu-hero-photo::after {
+  z-index: 4;
+  background:
+    linear-gradient(180deg, rgba(5, 4, 3, .58) 0%, transparent 25%, transparent 58%, rgba(5, 4, 3, .78) 100%),
+    linear-gradient(90deg, rgba(5, 4, 3, .4), transparent 35%, transparent 68%, rgba(5, 4, 3, .35));
+}
+
+/* The home mark is now a quiet top-center lockup: logo first, typography beneath. */
+body:has(.zdu-face-home) .site-header .brand-link {
+  top: clamp(20px, 4.5vh, 46px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: auto;
+  max-width: min(88vw, 340px);
+  padding: 0;
+  color: #fff8ea;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  animation: none;
+}
+
+body:has(.zdu-face-home) .site-header .brand-link img {
+  width: clamp(58px, 7vw, 78px);
+  height: clamp(58px, 7vw, 78px);
+}
+
+body:has(.zdu-face-home) .site-header .brand-wordmark {
+  justify-items: center;
+  text-align: center;
+}
+
+body:has(.zdu-face-home) .site-header .brand-wordmark strong {
+  font-size: clamp(.75rem, 1.2vw, .96rem);
+  letter-spacing: .12em;
+}
+
+body:has(.zdu-face-home) .site-header .brand-wordmark small {
+  font-size: .51rem;
+  letter-spacing: .24em;
+}
+
+body:has(.zdu-face-home) .zdu-face-hero-copy {
+  top: clamp(205px, 28vh, 310px);
+  bottom: auto;
+}
+
+/* Keep the page map present but subdued until someone reaches for a link. */
+body:has(.zdu-face-home) .main-nav a,
+.zdu-face-home .zdu-current-links a {
+  opacity: .34;
+  transition: opacity .25s ease, color .25s ease;
+}
+
+body:has(.zdu-face-home) .main-nav a:hover,
+body:has(.zdu-face-home) .main-nav a:focus-visible,
+body:has(.zdu-face-home) .main-nav a.active,
+.zdu-face-home .zdu-current-links a:hover,
+.zdu-face-home .zdu-current-links a:focus-visible {
+  opacity: 1;
+}
+
+body:has(.zdu-face-home) .main-nav:has(a:hover) a:not(:hover) {
+  opacity: .16;
+}
+
+@media (max-width: 900px) {
+  .zdu-face-home .zdu-face-hero-copy {
+    top: 230px;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .zdu-face-home .zdu-face-hero {
+    min-height: 860px;
+  }
+
+  .zdu-face-home .zdu-hero-slide {
+    background-position: center 30% !important;
+  }
+
+  .zdu-face-home .zdu-face-hero-copy {
+    top: 214px !important;
+    bottom: auto !important;
+  }
+
+  body:has(.zdu-face-home) .site-header .brand-link {
+    top: 18px;
+  }
+
+  body:has(.zdu-face-home) .main-nav a {
+    opacity: 1;
+  }
+}
+
+/* Hide only the decorative collage/backdrop layers; the live slider remains. */
+.hero .hero-collage,
+.hero .hero-collage-layer,
+.hero .hero-photo-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] {
+  display: none !important;
+}
+
+/* The active phone/image slider fills the complete hero without an aggressive crop. */
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+/* Keep the logo above the page links and stack the hero type beneath it. */
+.hero .hero-logo,
+.hero [data-hero-logo] {
+  position: absolute;
+  top: clamp(1.25rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero .hero-copy,
+.hero [data-hero-copy] {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy,
+  .hero [data-hero-copy] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero .hero-logo,
+  .hero [data-hero-logo] {
+    top: 1rem;
+    width: min(76vw, 20rem);
+  }
+
+  .hero .hero-slide img,
+  .hero .hero-media img,
+  .hero [data-hero-slide] img,
+  .hero [data-hero-media] img {
+    object-position: 50% 42%;
+    transform: scale(1.005);
+  }
+}
+/* ZDU hero final pass: one full-bleed slider, centered mark, hover-reveal type. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero .hero-collage,
+.hero .hero-collage-layer,
+.hero .hero-photo-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] {
+  display: none !important;
+}
+
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+.hero .hero-logo,
+.hero [data-hero-logo] {
+  position: absolute;
+  top: clamp(1.125rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero .hero-copy,
+.hero [data-hero-copy] {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy,
+  .hero [data-hero-copy] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero .hero-logo,
+  .hero [data-hero-logo] {
+    top: 1rem;
+    width: min(76vw, 20rem);
+  }
+
+  .hero .hero-slide img,
+  .hero .hero-media img,
+  .hero [data-hero-slide] img,
+  .hero [data-hero-media] img {
+    object-position: 50% 42%;
+    transform: scale(1.005);
+  }
+}
+/* ZDU hero final pass: single full-bleed slider, centered mark, hover-reveal type. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero .hero-collage,
+.hero .hero-collage-layer,
+.hero .hero-photo-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] {
+  display: none !important;
+}
+
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+.hero .hero-logo,
+.hero [data-hero-logo] {
+  position: absolute;
+  top: clamp(1.125rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero .hero-copy,
+.hero [data-hero-copy] {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy,
+  .hero [data-hero-copy] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero .hero-logo,
+  .hero [data-hero-logo] {
+    top: 1rem;
+    width: min(76vw, 20rem);
+  }
+
+  .hero .hero-slide img,
+  .hero .hero-media img,
+  .hero [data-hero-slide] img,
+  .hero [data-hero-media] img {
+    object-position: 50% 42%;
+    transform: scale(1.005);
+  }
+}
+/* Final hero pass: single full-bleed slider, centered mark, hover-reveal copy. */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero .hero-collage, .hero .hero-collage-layer, .hero .hero-photo-collage, .hero .hero-background-collage, .hero .hero-backdrop, .hero [data-hero-collage], .hero [data-hero-backdrop] { display: none !important; }
+.hero .hero-slider, .hero .hero-slides, .hero .hero-media, .hero [data-hero-slider], .hero [data-hero-media] { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.hero .hero-slide, .hero .hero-slide.is-active, .hero [data-hero-slide] { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.015); }
+.hero .hero-logo, .hero [data-hero-logo] { position: absolute; top: clamp(1.125rem, 4vh, 3rem); left: 50%; z-index: 5; transform: translateX(-50%); }
+.hero .hero-copy, .hero [data-hero-copy] { position: relative; z-index: 4; opacity: 0; transform: translateY(1rem); transition: opacity 450ms ease, transform 450ms ease; }
+.hero:hover .hero-copy, .hero:focus-within .hero-copy, .hero:hover [data-hero-copy], .hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 700px) { .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); } .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); } }
+/* ZDU hero final pass: single full-bleed slider, centered mark, hover-reveal type. */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero .hero-collage, .hero .hero-collage-layer, .hero .hero-photo-collage, .hero .hero-background-collage, .hero .hero-backdrop, .hero [data-hero-collage], .hero [data-hero-backdrop] { display: none !important; }
+.hero .hero-slider, .hero .hero-slides, .hero .hero-media, .hero [data-hero-slider], .hero [data-hero-media] { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.hero .hero-slide, .hero .hero-slide.is-active, .hero [data-hero-slide] { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.015); }
+.hero .hero-logo, .hero [data-hero-logo] { position: absolute; top: clamp(1.125rem, 4vh, 3rem); left: 50%; z-index: 5; transform: translateX(-50%); }
+.hero .hero-copy, .hero [data-hero-copy] { position: relative; z-index: 4; opacity: 0; transform: translateY(1rem); transition: opacity 450ms ease, transform 450ms ease; }
+.hero:hover .hero-copy, .hero:focus-within .hero-copy, .hero:hover [data-hero-copy], .hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 700px) { .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); } .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); } }
+/* ZDU hero final pass: single full-bleed slider, centered mark, hover-reveal type. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero .hero-collage,
+.hero .hero-collage-layer,
+.hero .hero-photo-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] {
+  display: none !important;
+}
+
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+.hero .hero-logo,
+.hero [data-hero-logo] {
+  position: absolute;
+  top: clamp(1.125rem, 4vh, 3rem);
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.hero .hero-copy,
+.hero [data-hero-copy] {
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy,
+  .hero [data-hero-copy] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero .hero-logo,
+  .hero [data-hero-logo] {
+    top: 1rem;
+    width: min(76vw, 20rem);
+  }
+
+  .hero .hero-slide img,
+  .hero .hero-media img,
+  .hero [data-hero-slide] img,
+  .hero [data-hero-media] img {
+    object-position: 50% 42%;
+    transform: scale(1.005);
+  }
+}
+/* ZDU hero final pass */
+/* Final hero pass: full-bleed single slider, centered mark, hover-reveal copy. */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero .hero-collage,
+.hero .hero-collage-layer,
+.hero .hero-photo-collage,
+.hero .hero-background-collage,
+.hero .hero-backdrop,
+.hero [data-hero-collage],
+.hero [data-hero-backdrop] { display: none !important; }
+.hero .hero-slider,
+.hero .hero-slides,
+.hero .hero-media,
+.hero [data-hero-slider],
+.hero [data-hero-media] { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.hero .hero-slide,
+.hero .hero-slide.is-active,
+.hero [data-hero-slide] { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-slide img,
+.hero .hero-media img,
+.hero [data-hero-slide] img,
+.hero [data-hero-media] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.015); }
+.hero .hero-logo,
+.hero [data-hero-logo] { position: absolute; top: clamp(1.125rem, 4vh, 3rem); left: 50%; z-index: 5; transform: translateX(-50%); }
+.hero .hero-copy,
+.hero [data-hero-copy] { position: relative; z-index: 4; opacity: 0; transform: translateY(1rem); transition: opacity 450ms ease, transform 450ms ease; }
+.hero:hover .hero-copy,
+.hero:focus-within .hero-copy,
+.hero:hover [data-hero-copy],
+.hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; }
+}
+@media (max-width: 700px) {
+  .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); }
+  .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); }
+}
+/* Final hero pass: full-bleed single slider, centered mark, hover-reveal copy. */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero .hero-collage, .hero .hero-collage-layer, .hero .hero-photo-collage,
+.hero .hero-background-collage, .hero .hero-backdrop,
+.hero [data-hero-collage], .hero [data-hero-backdrop] { display: none !important; }
+.hero .hero-slider, .hero .hero-slides, .hero .hero-media,
+.hero [data-hero-slider], .hero [data-hero-media] { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.hero .hero-slide, .hero .hero-slide.is-active, .hero [data-hero-slide] { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img,
+.hero [data-hero-media] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.015); }
+.hero .hero-logo, .hero [data-hero-logo] { position: absolute; top: clamp(1.125rem, 4vh, 3rem); left: 50%; z-index: 5; transform: translateX(-50%); }
+.hero .hero-copy, .hero [data-hero-copy] { position: relative; z-index: 4; opacity: 0; transform: translateY(1rem); transition: opacity 450ms ease, transform 450ms ease; }
+.hero:hover .hero-copy, .hero:focus-within .hero-copy, .hero:hover [data-hero-copy], .hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; } }
+@media (max-width: 700px) { .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); } .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); } }
+/* Final hero pass: full-bleed single slider, centered mark, hover-reveal copy. */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero .hero-collage, .hero .hero-collage-layer, .hero .hero-photo-collage,
+.hero .hero-background-collage, .hero .hero-backdrop,
+.hero [data-hero-collage], .hero [data-hero-backdrop] { display: none !important; }
+.hero .hero-slider, .hero .hero-slides, .hero .hero-media,
+.hero [data-hero-slider], .hero [data-hero-media] { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.hero .hero-slide, .hero .hero-slide.is-active, .hero [data-hero-slide] { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img,
+.hero [data-hero-media] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.015); }
+.hero .hero-logo, .hero [data-hero-logo] { position: absolute; top: clamp(1.125rem, 4vh, 3rem); left: 50%; z-index: 5; transform: translateX(-50%); }
+.hero .hero-copy, .hero [data-hero-copy] { position: relative; z-index: 4; opacity: 0; transform: translateY(1rem); transition: opacity 450ms ease, transform 450ms ease; }
+.hero:hover .hero-copy, .hero:focus-within .hero-copy, .hero:hover [data-hero-copy], .hero:focus-within [data-hero-copy] { opacity: 1; transform: translateY(0); }
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero .hero-copy, .hero [data-hero-copy] { opacity: 1; transform: none; transition: none; }
+}
+@media (max-width: 700px) {
+  .hero .hero-logo, .hero [data-hero-logo] { top: 1rem; width: min(76vw, 20rem); }
+  .hero .hero-slide img, .hero .hero-media img, .hero [data-hero-slide] img, .hero [data-hero-media] img { object-position: 50% 42%; transform: scale(1.005); }
+}

@@ -25,14 +25,6 @@ const heroSlides = [
   }
 ];
 
-const heroWallPhotos = [
-  { image: `${zduHeroPath}/zacc-maroon-wide.jpeg`, position: 'center 34%' },
-  { image: `${zduHeroPath}/zacc-black-portrait.jpeg`, position: 'center 28%' },
-  { image: `${zduHeroPath}/zacc-cafe-centered.jpeg`, position: 'center 34%' },
-  { image: `${zduHeroPath}/zacc-archway.jpeg`, position: 'center 42%' },
-  { image: `${zduHeroPath}/zacc-desk-profile.jpeg`, position: 'center 42%' }
-];
-
 const feedItems = [
   {
     eyebrow: 'Start Here',
@@ -141,18 +133,6 @@ export default function Home() {
       <div className="zdu-face-home">
         <section className="zdu-face-hero" aria-labelledby="home-hero-title">
           <div className="zdu-hero-photo" aria-hidden="true">
-            <div className="zdu-hero-photo-wall">
-              {heroWallPhotos.map((photo, index) => (
-                <span
-                  className={`zdu-hero-tile zdu-hero-tile-${index + 1}`}
-                  key={photo.image}
-                  style={{
-                    backgroundImage: `url("${photo.image}")`,
-                    backgroundPosition: photo.position
-                  }}
-                />
-              ))}
-            </div>
             {heroSlides.map((slide) => (
               <span
                 className="zdu-hero-slide"
