@@ -379,3 +379,26 @@
     aspect-ratio: 4 / 5;
   }
 }
+
+/* Inner-page visibility guardrail.
+ * The homepage uses the cinematic hover-reveal treatment, but that behavior
+ * must never hide copy on pages such as Coaching, Products, or Resources.
+ */
+.site-main-inner .hero .hero-content,
+.site-main-inner .hero .hero-description,
+.site-main-inner .hero .hero-actions,
+.site-main-inner .hero .hero-media {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.site-main-inner .hero .hero-content {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.site-main-inner .hero .hero-media {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1 !important;
+}
