@@ -402,3 +402,61 @@
   inset: auto !important;
   z-index: 1 !important;
 }
+
+/* Section contrast guardrail: protect dark editorial sections from the
+ * higher-specificity paper/cream striping rule in styles.css. */
+main.site-main-inner > section.section.framework-section,
+main.site-main-inner > section.section.values-section,
+main.site-main-inner > section.section.comparison-section,
+main.site-main-inner > section.section.preview-gallery,
+main.site-main-inner > section.section.digital-services-section,
+main.site-main-inner > section.section.confidence-readiness-section,
+main.site-main-inner > section.section.real-testimonials-section,
+main.site-main-inner > section.section.proof-standard-section {
+  color: var(--zdu-paper, #fff8eb) !important;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(210, 161, 58, .14), transparent 22%),
+    var(--zdu-obsidian, #050403) !important;
+}
+
+main.site-main-inner > section.section.framework-section .section-header h2,
+main.site-main-inner > section.section.values-section .section-header h2,
+main.site-main-inner > section.section.comparison-section .section-header h2,
+main.site-main-inner > section.section.preview-gallery .section-header h2,
+main.site-main-inner > section.section.digital-services-section .section-header h2,
+main.site-main-inner > section.section.confidence-readiness-section .section-header h2,
+main.site-main-inner > section.section.real-testimonials-section .section-header h2,
+main.site-main-inner > section.section.proof-standard-section .section-header h2 {
+  color: var(--zdu-paper, #fff8eb) !important;
+}
+
+main.site-main-inner > section.section.framework-section .section-header h2 em,
+main.site-main-inner > section.section.values-section .section-header h2 em,
+main.site-main-inner > section.section.comparison-section .section-header h2 em,
+main.site-main-inner > section.section.preview-gallery .section-header h2 em,
+main.site-main-inner > section.section.digital-services-section .section-header h2 em,
+main.site-main-inner > section.section.confidence-readiness-section .section-header h2 em,
+main.site-main-inner > section.section.real-testimonials-section .section-header h2 em,
+main.site-main-inner > section.section.proof-standard-section .section-header h2 em {
+  color: var(--zdu-gold, #d2a13a) !important;
+}
+
+main.site-main-inner > section.section.framework-section .section-description,
+main.site-main-inner > section.section.values-section .section-description,
+main.site-main-inner > section.section.comparison-section .section-description,
+main.site-main-inner > section.section.preview-gallery .section-description,
+main.site-main-inner > section.section.digital-services-section .section-description,
+main.site-main-inner > section.section.confidence-readiness-section .section-description,
+main.site-main-inner > section.section.real-testimonials-section .section-description,
+main.site-main-inner > section.section.proof-standard-section .section-description {
+  color: rgba(255, 248, 234, .86) !important;
+}
+
+/* Non-dark editorial sections use ink headings instead of inherited white. */
+main.site-main-inner > section.section:not(.framework-section):not(.values-section):not(.comparison-section):not(.preview-gallery):not(.digital-services-section):not(.confidence-readiness-section):not(.real-testimonials-section):not(.proof-standard-section) .section-header h2 {
+  color: #12100d !important;
+}
+
+main.site-main-inner > section.section:not(.framework-section):not(.values-section):not(.comparison-section):not(.preview-gallery):not(.digital-services-section):not(.confidence-readiness-section):not(.real-testimonials-section):not(.proof-standard-section) .section-header h2 em {
+  color: var(--zdu-gold-deep, #a87919) !important;
+}
